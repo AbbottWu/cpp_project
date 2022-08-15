@@ -88,4 +88,5 @@ typings/
 # Electron-Forge
 out/
 
-.vscode
+.vscode/
+.vs/

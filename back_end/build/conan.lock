@@ -1,0 +1,118 @@
+{
+ "graph_lock": {
+  "nodes": {
+   "0": {
+    "options": "abseil:shared=False\nc-ares:shared=False\nc-ares:tools=True\ngoogleapis:shared=False\ngrpc:codegen=True\ngrpc:cpp_plugin=True\ngrpc:csharp_ext=False\ngrpc:csharp_plugin=True\ngrpc:node_plugin=True\ngrpc:objective_c_plugin=True\ngrpc:php_plugin=True\ngrpc:python_plugin=True\ngrpc:ruby_plugin=True\ngrpc:secure=False\ngrpc:shared=False\ngrpc-proto:shared=False\ngtest:build_gmock=True\ngtest:hide_symbols=False\ngtest:no_main=False\ngtest:shared=False\nopenssl:386=False\nopenssl:capieng_dialog=False\nopenssl:enable_capieng=False\nopenssl:enable_weak_ssl_ciphers=False\nopenssl:no_aria=False\nopenssl:no_asm=False\nopenssl:no_async=False\nopenssl:no_bf=False\nopenssl:no_blake2=False\nopenssl:no_camellia=False\nopenssl:no_cast=False\nopenssl:no_chacha=False\nopenssl:no_cms=False\nopenssl:no_comp=False\nopenssl:no_ct=False\nopenssl:no_deprecated=False\nopenssl:no_des=False\nopenssl:no_dgram=False\nopenssl:no_dh=False\nopenssl:no_dsa=False\nopenssl:no_dso=False\nopenssl:no_ec=False\nopenssl:no_ecdh=False\nopenssl:no_ecdsa=False\nopenssl:no_engine=False\nopenssl:no_filenames=False\nopenssl:no_gost=False\nopenssl:no_hmac=False\nopenssl:no_idea=False\nopenssl:no_md4=False\nopenssl:no_md5=False\nopenssl:no_mdc2=False\nopenssl:no_ocsp=False\nopenssl:no_pinshared=False\nopenssl:no_rc2=False\nopenssl:no_rfc3779=False\nopenssl:no_rmd160=False\nopenssl:no_rsa=False\nopenssl:no_seed=False\nopenssl:no_sha=False\nopenssl:no_sm2=False\nopenssl:no_sm3=False\nopenssl:no_sm4=False\nopenssl:no_sock=False\nopenssl:no_srp=False\nopenssl:no_srtp=False\nopenssl:no_sse2=False\nopenssl:no_ssl=False\nopenssl:no_ssl3=False\nopenssl:no_stdio=False\nopenssl:no_tests=False\nopenssl:no_threads=False\nopenssl:no_tls1=False\nopenssl:no_ts=False\nopenssl:no_whirlpool=False\nopenssl:openssldir=None\nopenssl:shared=False\nprotobuf:debug_suffix=True\nprotobuf:lite=False\nprotobuf:shared=False\nprotobuf:with_rtti=True\nprotobuf:with_zlib=True\nre2:shared=False\nzlib:shared=False",
+    "requires": [
+     "1",
+     "10",
+     "5",
+     "11"
+    ],
+    "path": "..\\conanfile.py",
+    "context": "host"
+   },
+   "1": {
+    "ref": "grpc/1.48.0",
+    "options": "codegen=True\ncpp_plugin=True\ncsharp_ext=False\ncsharp_plugin=True\nnode_plugin=True\nobjective_c_plugin=True\nphp_plugin=True\npython_plugin=True\nruby_plugin=True\nsecure=False\nshared=False\nabseil:shared=False\nc-ares:shared=False\nc-ares:tools=True\ngoogleapis:shared=False\ngrpc-proto:shared=False\nopenssl:386=False\nopenssl:capieng_dialog=False\nopenssl:enable_capieng=False\nopenssl:enable_weak_ssl_ciphers=False\nopenssl:no_aria=False\nopenssl:no_asm=False\nopenssl:no_async=False\nopenssl:no_bf=False\nopenssl:no_blake2=False\nopenssl:no_camellia=False\nopenssl:no_cast=False\nopenssl:no_chacha=False\nopenssl:no_cms=False\nopenssl:no_comp=False\nopenssl:no_ct=False\nopenssl:no_deprecated=False\nopenssl:no_des=False\nopenssl:no_dgram=False\nopenssl:no_dh=False\nopenssl:no_dsa=False\nopenssl:no_dso=False\nopenssl:no_ec=False\nopenssl:no_ecdh=False\nopenssl:no_ecdsa=False\nopenssl:no_engine=False\nopenssl:no_filenames=False\nopenssl:no_gost=False\nopenssl:no_hmac=False\nopenssl:no_idea=False\nopenssl:no_md4=False\nopenssl:no_md5=False\nopenssl:no_mdc2=False\nopenssl:no_ocsp=False\nopenssl:no_pinshared=False\nopenssl:no_rc2=False\nopenssl:no_rfc3779=False\nopenssl:no_rmd160=False\nopenssl:no_rsa=False\nopenssl:no_seed=False\nopenssl:no_sha=False\nopenssl:no_sm2=False\nopenssl:no_sm3=False\nopenssl:no_sm4=False\nopenssl:no_sock=False\nopenssl:no_srp=False\nopenssl:no_srtp=False\nopenssl:no_sse2=False\nopenssl:no_ssl=False\nopenssl:no_ssl3=False\nopenssl:no_stdio=False\nopenssl:no_tests=False\nopenssl:no_threads=False\nopenssl:no_tls1=False\nopenssl:no_ts=False\nopenssl:no_whirlpool=False\nopenssl:openssldir=None\nopenssl:shared=False\nprotobuf:debug_suffix=True\nprotobuf:lite=False\nprotobuf:shared=False\nprotobuf:with_rtti=True\nprotobuf:with_zlib=True\nre2:shared=False\nzlib:shared=False",
+    "package_id": "6e7f973c29884a109eee8c0e86c58b08424b8b64",
+    "prev": "0",
+    "requires": [
+     "2",
+     "3",
+     "4",
+     "5",
+     "7",
+     "6",
+     "8",
+     "9"
+    ],
+    "context": "host"
+   },
+   "2": {
+    "ref": "abseil/20211102.0",
+    "options": "shared=False",
+    "package_id": "70711aff723b218b02483e600038031bf91007bc",
+    "prev": "0",
+    "context": "host"
+   },
+   "3": {
+    "ref": "c-ares/1.18.1",
+    "options": "shared=False\ntools=True",
+    "package_id": "104d04e27d80f90ee826c18d63336299ffadd9c8",
+    "prev": "0",
+    "context": "host"
+   },
+   "4": {
+    "ref": "openssl/1.1.1o",
+    "options": "386=False\ncapieng_dialog=False\nenable_capieng=False\nenable_weak_ssl_ciphers=False\nno_aria=False\nno_asm=False\nno_async=False\nno_bf=False\nno_blake2=False\nno_camellia=False\nno_cast=False\nno_chacha=False\nno_cms=False\nno_comp=False\nno_ct=False\nno_deprecated=False\nno_des=False\nno_dgram=False\nno_dh=False\nno_dsa=False\nno_dso=False\nno_ec=False\nno_ecdh=False\nno_ecdsa=False\nno_engine=False\nno_filenames=False\nno_gost=False\nno_hmac=False\nno_idea=False\nno_md4=False\nno_md5=False\nno_mdc2=False\nno_ocsp=False\nno_pinshared=False\nno_rc2=False\nno_rfc3779=False\nno_rmd160=False\nno_rsa=False\nno_seed=False\nno_sha=False\nno_sm2=False\nno_sm3=False\nno_sm4=False\nno_sock=False\nno_srp=False\nno_srtp=False\nno_sse2=False\nno_ssl=False\nno_ssl3=False\nno_stdio=False\nno_tests=False\nno_threads=False\nno_tls1=False\nno_ts=False\nno_whirlpool=False\nopenssldir=None\nshared=False",
+    "package_id": "70711aff723b218b02483e600038031bf91007bc",
+    "prev": "0",
+    "context": "host"
+   },
+   "5": {
+    "ref": "protobuf/3.21.1",
+    "options": "debug_suffix=True\nlite=False\nshared=False\nwith_rtti=True\nwith_zlib=True\nzlib:shared=False",
+    "package_id": "44445304db01f6ac0c6325952fa6f0c6a0e6cde7",
+    "prev": "0",
+    "requires": [
+     "6"
+    ],
+    "context": "host"
+   },
+   "6": {
+    "ref": "zlib/1.2.12",
+    "options": "shared=False",
+    "package_id": "70711aff723b218b02483e600038031bf91007bc",
+    "prev": "0",
+    "context": "host"
+   },
+   "7": {
+    "ref": "re2/20220201",
+    "options": "shared=False",
+    "package_id": "70711aff723b218b02483e600038031bf91007bc",
+    "prev": "0",
+    "context": "host"
+   },
+   "8": {
+    "ref": "googleapis/cci.20220531",
+    "options": "shared=False\nprotobuf:debug_suffix=True\nprotobuf:lite=False\nprotobuf:shared=False\nprotobuf:with_rtti=True\nprotobuf:with_zlib=True\nzlib:shared=False",
+    "package_id": "9a93ce97708b4ff65cfb7d910db977300eb257d5",
+    "prev": "0",
+    "requires": [
+     "5"
+    ],
+    "context": "host"
+   },
+   "9": {
+    "ref": "grpc-proto/cci.20220627",
+    "options": "shared=False\ngoogleapis:shared=False\nprotobuf:debug_suffix=True\nprotobuf:lite=False\nprotobuf:shared=False\nprotobuf:with_rtti=True\nprotobuf:with_zlib=True\nzlib:shared=False",
+    "package_id": "ad53281cef49d392d3f3253e30d23b67500c80c6",
+    "prev": "0",
+    "requires": [
+     "5",
+     "8"
+    ],
+    "context": "host"
+   },
+   "10": {
+    "ref": "ninja/1.11.0",
+    "options": "",
+    "package_id": "63c5d5dc6eb958dab897e143053e17f583d55879",
+    "prev": "0",
+    "context": "host"
+   },
+   "11": {
+    "ref": "gtest/cci.20210126",
+    "options": "build_gmock=True\nhide_symbols=False\nno_main=False\nshared=False",
+    "package_id": "68a060fdd97b62cfc15d770518cafb06fe311849",
+    "prev": "0",
+    "modified": true,
+    "context": "host"
+   }
+  },
+  "revisions_enabled": false
+ },
+ "version": "0.4",
+ "profile_host": "[settings]\narch=x86\narch_build=x86\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n"
+}
