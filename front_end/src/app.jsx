@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {List_Items} from './component.jsx';
+import { List_Items } from './component.jsx';
 import 'windi.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -47,22 +47,21 @@ function Main_Window(props) {
         ></input>
         <button className='text-gray-800 text-lg border py-4 px-8 rounded-lg  hover:(bg-gray-100)'
           onClick={() => {
-            if(content!=''){
+            if (content != '') {
               api.echo("echo").then(result => {
                 useList(list_content.concat([content + " " + result]));
                 useContent('');
               },
-              error => console.log(error));
+                error => console.log(error));
             }
           }}>
           提交</button>
 
-          <button className='text-gray-800 text-lg border py-4 px-8 rounded-lg  hover:(bg-gray-100)'
+        <button className='text-gray-800 text-lg border py-4 px-8 rounded-lg  hover:(bg-gray-100)'
           onClick={() => {
-            if(content!=''){
-              let t = api.query(content).then(result => alert(result),error => alert(error));
+            if (content != '') {
+              api.query(content).then(result => alert(result), error => alert(error));
               useContent('');
-              console.log(t)
             }
           }}>
           提取</button>
