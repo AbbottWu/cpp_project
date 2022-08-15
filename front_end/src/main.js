@@ -21,7 +21,7 @@ class Call_Task {
 
   /* 利用 getter 构造可经过 IPC 传递的数据 */
   get clone_able() {
-    return [this.err.code, this.msg];
+    return [this.err ? this.err.code : null, this.msg];
   }
 }
 
