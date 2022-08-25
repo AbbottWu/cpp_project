@@ -52,4 +52,4 @@ add_dependencies(proto_gen_cxx compile_cxx_protos)
 #add_custom_command(TARGET compile_cxx_protos POST_BUILD        # Adds a post-build event to MyTest
 #    COMMAND ${CMAKE_COMMAND} -E copy_directory  # which executes "cmake - E copy_if_different..."
 #        "${PROTO_CXX_OUT}"      # <--this is in-file
-#        "${CMAKE_CURRENT_SOURCE_DIR}/../src/")                 # <--this is out-file path
+#        "${CMAKE_CURRENT_SOURCE_DIR}/../src/extern")                 # <--this is out-file path
