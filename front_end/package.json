@@ -52,7 +52,7 @@
               "nodeIntegration": false,
               "entryPoints": [
                 {
-                  "html": "./src/index.html",
+                  "html": "./src/static/index.html",
                   "js": "./src/renderer.js",
                   "name": "main_window",
                   "preload": {
@@ -85,12 +85,15 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.6.9",
+    "@windicss/plugin-animations": "^1.0.9",
     "electron-squirrel-startup": "^1.0.0",
     "nanoid": "^4.0.0",
     "postcss": "^8.4.16",
     "postcss-loader": "^7.0.1",
     "postcss-windicss": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router": "^6.3.0",
+    "react-router-dom": "^6.3.0"
   }
 }

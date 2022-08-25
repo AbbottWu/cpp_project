@@ -26,7 +26,7 @@
  * ```
  */
 // Add this to the end of the existing file
-import './app.jsx';
-import './index.css';
+import './router.jsx';
+import './static/index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
