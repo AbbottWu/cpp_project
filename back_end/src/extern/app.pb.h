@@ -45,24 +45,359 @@ struct TableStruct_app_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_app_2eproto;
 namespace app {
+class IsOK;
+struct IsOKDefaultTypeInternal;
+extern IsOKDefaultTypeInternal _IsOK_default_instance_;
 class Question;
 struct QuestionDefaultTypeInternal;
 extern QuestionDefaultTypeInternal _Question_default_instance_;
+class Questions;
+struct QuestionsDefaultTypeInternal;
+extern QuestionsDefaultTypeInternal _Questions_default_instance_;
 class Record;
 struct RecordDefaultTypeInternal;
 extern RecordDefaultTypeInternal _Record_default_instance_;
+class RequestQuestions;
+struct RequestQuestionsDefaultTypeInternal;
+extern RequestQuestionsDefaultTypeInternal _RequestQuestions_default_instance_;
 class User;
 struct UserDefaultTypeInternal;
 extern UserDefaultTypeInternal _User_default_instance_;
 }  // namespace app
 PROTOBUF_NAMESPACE_OPEN
+template<> ::app::IsOK* Arena::CreateMaybeMessage<::app::IsOK>(Arena*);
 template<> ::app::Question* Arena::CreateMaybeMessage<::app::Question>(Arena*);
+template<> ::app::Questions* Arena::CreateMaybeMessage<::app::Questions>(Arena*);
 template<> ::app::Record* Arena::CreateMaybeMessage<::app::Record>(Arena*);
+template<> ::app::RequestQuestions* Arena::CreateMaybeMessage<::app::RequestQuestions>(Arena*);
 template<> ::app::User* Arena::CreateMaybeMessage<::app::User>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace app {
 
 // ===================================================================
+
+class IsOK final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:app.IsOK) */ {
+ public:
+  inline IsOK() : IsOK(nullptr) {}
+  ~IsOK() override;
+  explicit PROTOBUF_CONSTEXPR IsOK(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  IsOK(const IsOK& from);
+  IsOK(IsOK&& from) noexcept
+    : IsOK() {
+    *this = ::std::move(from);
+  }
+
+  inline IsOK& operator=(const IsOK& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline IsOK& operator=(IsOK&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const IsOK& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const IsOK* internal_default_instance() {
+    return reinterpret_cast<const IsOK*>(
+               &_IsOK_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(IsOK& a, IsOK& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(IsOK* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(IsOK* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  IsOK* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<IsOK>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const IsOK& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const IsOK& from) {
+    IsOK::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(IsOK* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "app.IsOK";
+  }
+  protected:
+  explicit IsOK(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSuccessFieldNumber = 1,
+  };
+  // bool success = 1;
+  void clear_success();
+  bool success() const;
+  void set_success(bool value);
+  private:
+  bool _internal_success() const;
+  void _internal_set_success(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:app.IsOK)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    bool success_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_app_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RequestQuestions final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:app.RequestQuestions) */ {
+ public:
+  inline RequestQuestions() : RequestQuestions(nullptr) {}
+  ~RequestQuestions() override;
+  explicit PROTOBUF_CONSTEXPR RequestQuestions(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RequestQuestions(const RequestQuestions& from);
+  RequestQuestions(RequestQuestions&& from) noexcept
+    : RequestQuestions() {
+    *this = ::std::move(from);
+  }
+
+  inline RequestQuestions& operator=(const RequestQuestions& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RequestQuestions& operator=(RequestQuestions&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RequestQuestions& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RequestQuestions* internal_default_instance() {
+    return reinterpret_cast<const RequestQuestions*>(
+               &_RequestQuestions_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(RequestQuestions& a, RequestQuestions& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RequestQuestions* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RequestQuestions* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RequestQuestions* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RequestQuestions>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RequestQuestions& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RequestQuestions& from) {
+    RequestQuestions::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RequestQuestions* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "app.RequestQuestions";
+  }
+  protected:
+  explicit RequestQuestions(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kUserIdFieldNumber = 3,
+    kIsAnsweredFieldNumber = 1,
+    kForUserFieldNumber = 2,
+  };
+  // string userId = 3;
+  void clear_userid();
+  const std::string& userid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_userid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_userid();
+  PROTOBUF_NODISCARD std::string* release_userid();
+  void set_allocated_userid(std::string* userid);
+  private:
+  const std::string& _internal_userid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_userid(const std::string& value);
+  std::string* _internal_mutable_userid();
+  public:
+
+  // bool is_answered = 1;
+  void clear_is_answered();
+  bool is_answered() const;
+  void set_is_answered(bool value);
+  private:
+  bool _internal_is_answered() const;
+  void _internal_set_is_answered(bool value);
+  public:
+
+  // bool for_user = 2;
+  void clear_for_user();
+  bool for_user() const;
+  void set_for_user(bool value);
+  private:
+  bool _internal_for_user() const;
+  void _internal_set_for_user(bool value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:app.RequestQuestions)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr userid_;
+    bool is_answered_;
+    bool for_user_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_app_2eproto;
+};
+// -------------------------------------------------------------------
 
 class User final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:app.User) */ {
@@ -112,7 +447,7 @@ class User final :
                &_User_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(User& a, User& b) {
     a.Swap(&b);
@@ -318,7 +653,7 @@ class Question final :
                &_Question_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(Question& a, Question& b) {
     a.Swap(&b);
@@ -391,11 +726,28 @@ class Question final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kContentFieldNumber = 1,
-    kIdFieldNumber = 2,
-    kCategoryFieldNumber = 3,
+    kTitleFieldNumber = 1,
+    kContentFieldNumber = 2,
+    kIdFieldNumber = 3,
+    kAnswerFieldNumber = 6,
+    kCategoryFieldNumber = 4,
+    kAnsweredFieldNumber = 5,
   };
-  // string content = 1;
+  // string title = 1;
+  void clear_title();
+  const std::string& title() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_title(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_title();
+  PROTOBUF_NODISCARD std::string* release_title();
+  void set_allocated_title(std::string* title);
+  private:
+  const std::string& _internal_title() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_title(const std::string& value);
+  std::string* _internal_mutable_title();
+  public:
+
+  // string content = 2;
   void clear_content();
   const std::string& content() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -409,7 +761,7 @@ class Question final :
   std::string* _internal_mutable_content();
   public:
 
-  // string id = 2;
+  // string id = 3;
   void clear_id();
   const std::string& id() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -423,13 +775,36 @@ class Question final :
   std::string* _internal_mutable_id();
   public:
 
-  // int32 category = 3;
+  // string answer = 6;
+  void clear_answer();
+  const std::string& answer() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_answer(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_answer();
+  PROTOBUF_NODISCARD std::string* release_answer();
+  void set_allocated_answer(std::string* answer);
+  private:
+  const std::string& _internal_answer() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_answer(const std::string& value);
+  std::string* _internal_mutable_answer();
+  public:
+
+  // int32 category = 4;
   void clear_category();
   int32_t category() const;
   void set_category(int32_t value);
   private:
   int32_t _internal_category() const;
   void _internal_set_category(int32_t value);
+  public:
+
+  // bool answered = 5;
+  void clear_answered();
+  bool answered() const;
+  void set_answered(bool value);
+  private:
+  bool _internal_answered() const;
+  void _internal_set_answered(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:app.Question)
@@ -440,9 +815,169 @@ class Question final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr title_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr content_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr answer_;
     int32_t category_;
+    bool answered_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_app_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Questions final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:app.Questions) */ {
+ public:
+  inline Questions() : Questions(nullptr) {}
+  ~Questions() override;
+  explicit PROTOBUF_CONSTEXPR Questions(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Questions(const Questions& from);
+  Questions(Questions&& from) noexcept
+    : Questions() {
+    *this = ::std::move(from);
+  }
+
+  inline Questions& operator=(const Questions& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Questions& operator=(Questions&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Questions& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Questions* internal_default_instance() {
+    return reinterpret_cast<const Questions*>(
+               &_Questions_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(Questions& a, Questions& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Questions* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Questions* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Questions* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Questions>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Questions& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Questions& from) {
+    Questions::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Questions* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "app.Questions";
+  }
+  protected:
+  explicit Questions(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kQuestionsFieldNumber = 1,
+  };
+  // repeated .app.Question questions = 1;
+  int questions_size() const;
+  private:
+  int _internal_questions_size() const;
+  public:
+  void clear_questions();
+  ::app::Question* mutable_questions(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::app::Question >*
+      mutable_questions();
+  private:
+  const ::app::Question& _internal_questions(int index) const;
+  ::app::Question* _internal_add_questions();
+  public:
+  const ::app::Question& questions(int index) const;
+  ::app::Question* add_questions();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::app::Question >&
+      questions() const;
+
+  // @@protoc_insertion_point(class_scope:app.Questions)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::app::Question > questions_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -498,7 +1033,7 @@ class Record final :
                &_Record_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    5;
 
   friend void swap(Record& a, Record& b) {
     a.Swap(&b);
@@ -634,6 +1169,124 @@ class Record final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// IsOK
+
+// bool success = 1;
+inline void IsOK::clear_success() {
+  _impl_.success_ = false;
+}
+inline bool IsOK::_internal_success() const {
+  return _impl_.success_;
+}
+inline bool IsOK::success() const {
+  // @@protoc_insertion_point(field_get:app.IsOK.success)
+  return _internal_success();
+}
+inline void IsOK::_internal_set_success(bool value) {
+  
+  _impl_.success_ = value;
+}
+inline void IsOK::set_success(bool value) {
+  _internal_set_success(value);
+  // @@protoc_insertion_point(field_set:app.IsOK.success)
+}
+
+// -------------------------------------------------------------------
+
+// RequestQuestions
+
+// bool is_answered = 1;
+inline void RequestQuestions::clear_is_answered() {
+  _impl_.is_answered_ = false;
+}
+inline bool RequestQuestions::_internal_is_answered() const {
+  return _impl_.is_answered_;
+}
+inline bool RequestQuestions::is_answered() const {
+  // @@protoc_insertion_point(field_get:app.RequestQuestions.is_answered)
+  return _internal_is_answered();
+}
+inline void RequestQuestions::_internal_set_is_answered(bool value) {
+  
+  _impl_.is_answered_ = value;
+}
+inline void RequestQuestions::set_is_answered(bool value) {
+  _internal_set_is_answered(value);
+  // @@protoc_insertion_point(field_set:app.RequestQuestions.is_answered)
+}
+
+// bool for_user = 2;
+inline void RequestQuestions::clear_for_user() {
+  _impl_.for_user_ = false;
+}
+inline bool RequestQuestions::_internal_for_user() const {
+  return _impl_.for_user_;
+}
+inline bool RequestQuestions::for_user() const {
+  // @@protoc_insertion_point(field_get:app.RequestQuestions.for_user)
+  return _internal_for_user();
+}
+inline void RequestQuestions::_internal_set_for_user(bool value) {
+  
+  _impl_.for_user_ = value;
+}
+inline void RequestQuestions::set_for_user(bool value) {
+  _internal_set_for_user(value);
+  // @@protoc_insertion_point(field_set:app.RequestQuestions.for_user)
+}
+
+// string userId = 3;
+inline void RequestQuestions::clear_userid() {
+  _impl_.userid_.ClearToEmpty();
+}
+inline const std::string& RequestQuestions::userid() const {
+  // @@protoc_insertion_point(field_get:app.RequestQuestions.userId)
+  return _internal_userid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RequestQuestions::set_userid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.userid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:app.RequestQuestions.userId)
+}
+inline std::string* RequestQuestions::mutable_userid() {
+  std::string* _s = _internal_mutable_userid();
+  // @@protoc_insertion_point(field_mutable:app.RequestQuestions.userId)
+  return _s;
+}
+inline const std::string& RequestQuestions::_internal_userid() const {
+  return _impl_.userid_.Get();
+}
+inline void RequestQuestions::_internal_set_userid(const std::string& value) {
+  
+  _impl_.userid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RequestQuestions::_internal_mutable_userid() {
+  
+  return _impl_.userid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RequestQuestions::release_userid() {
+  // @@protoc_insertion_point(field_release:app.RequestQuestions.userId)
+  return _impl_.userid_.Release();
+}
+inline void RequestQuestions::set_allocated_userid(std::string* userid) {
+  if (userid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.userid_.SetAllocated(userid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.userid_.IsDefault()) {
+    _impl_.userid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:app.RequestQuestions.userId)
+}
+
+// -------------------------------------------------------------------
+
 // User
 
 // string name = 1;
@@ -835,7 +1488,57 @@ User::mutable_questionsid() {
 
 // Question
 
-// string content = 1;
+// string title = 1;
+inline void Question::clear_title() {
+  _impl_.title_.ClearToEmpty();
+}
+inline const std::string& Question::title() const {
+  // @@protoc_insertion_point(field_get:app.Question.title)
+  return _internal_title();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Question::set_title(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.title_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:app.Question.title)
+}
+inline std::string* Question::mutable_title() {
+  std::string* _s = _internal_mutable_title();
+  // @@protoc_insertion_point(field_mutable:app.Question.title)
+  return _s;
+}
+inline const std::string& Question::_internal_title() const {
+  return _impl_.title_.Get();
+}
+inline void Question::_internal_set_title(const std::string& value) {
+  
+  _impl_.title_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Question::_internal_mutable_title() {
+  
+  return _impl_.title_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Question::release_title() {
+  // @@protoc_insertion_point(field_release:app.Question.title)
+  return _impl_.title_.Release();
+}
+inline void Question::set_allocated_title(std::string* title) {
+  if (title != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.title_.SetAllocated(title, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.title_.IsDefault()) {
+    _impl_.title_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:app.Question.title)
+}
+
+// string content = 2;
 inline void Question::clear_content() {
   _impl_.content_.ClearToEmpty();
 }
@@ -885,7 +1588,7 @@ inline void Question::set_allocated_content(std::string* content) {
   // @@protoc_insertion_point(field_set_allocated:app.Question.content)
 }
 
-// string id = 2;
+// string id = 3;
 inline void Question::clear_id() {
   _impl_.id_.ClearToEmpty();
 }
@@ -935,7 +1638,7 @@ inline void Question::set_allocated_id(std::string* id) {
   // @@protoc_insertion_point(field_set_allocated:app.Question.id)
 }
 
-// int32 category = 3;
+// int32 category = 4;
 inline void Question::clear_category() {
   _impl_.category_ = 0;
 }
@@ -953,6 +1656,120 @@ inline void Question::_internal_set_category(int32_t value) {
 inline void Question::set_category(int32_t value) {
   _internal_set_category(value);
   // @@protoc_insertion_point(field_set:app.Question.category)
+}
+
+// bool answered = 5;
+inline void Question::clear_answered() {
+  _impl_.answered_ = false;
+}
+inline bool Question::_internal_answered() const {
+  return _impl_.answered_;
+}
+inline bool Question::answered() const {
+  // @@protoc_insertion_point(field_get:app.Question.answered)
+  return _internal_answered();
+}
+inline void Question::_internal_set_answered(bool value) {
+  
+  _impl_.answered_ = value;
+}
+inline void Question::set_answered(bool value) {
+  _internal_set_answered(value);
+  // @@protoc_insertion_point(field_set:app.Question.answered)
+}
+
+// string answer = 6;
+inline void Question::clear_answer() {
+  _impl_.answer_.ClearToEmpty();
+}
+inline const std::string& Question::answer() const {
+  // @@protoc_insertion_point(field_get:app.Question.answer)
+  return _internal_answer();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Question::set_answer(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.answer_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:app.Question.answer)
+}
+inline std::string* Question::mutable_answer() {
+  std::string* _s = _internal_mutable_answer();
+  // @@protoc_insertion_point(field_mutable:app.Question.answer)
+  return _s;
+}
+inline const std::string& Question::_internal_answer() const {
+  return _impl_.answer_.Get();
+}
+inline void Question::_internal_set_answer(const std::string& value) {
+  
+  _impl_.answer_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Question::_internal_mutable_answer() {
+  
+  return _impl_.answer_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Question::release_answer() {
+  // @@protoc_insertion_point(field_release:app.Question.answer)
+  return _impl_.answer_.Release();
+}
+inline void Question::set_allocated_answer(std::string* answer) {
+  if (answer != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.answer_.SetAllocated(answer, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.answer_.IsDefault()) {
+    _impl_.answer_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:app.Question.answer)
+}
+
+// -------------------------------------------------------------------
+
+// Questions
+
+// repeated .app.Question questions = 1;
+inline int Questions::_internal_questions_size() const {
+  return _impl_.questions_.size();
+}
+inline int Questions::questions_size() const {
+  return _internal_questions_size();
+}
+inline void Questions::clear_questions() {
+  _impl_.questions_.Clear();
+}
+inline ::app::Question* Questions::mutable_questions(int index) {
+  // @@protoc_insertion_point(field_mutable:app.Questions.questions)
+  return _impl_.questions_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::app::Question >*
+Questions::mutable_questions() {
+  // @@protoc_insertion_point(field_mutable_list:app.Questions.questions)
+  return &_impl_.questions_;
+}
+inline const ::app::Question& Questions::_internal_questions(int index) const {
+  return _impl_.questions_.Get(index);
+}
+inline const ::app::Question& Questions::questions(int index) const {
+  // @@protoc_insertion_point(field_get:app.Questions.questions)
+  return _internal_questions(index);
+}
+inline ::app::Question* Questions::_internal_add_questions() {
+  return _impl_.questions_.Add();
+}
+inline ::app::Question* Questions::add_questions() {
+  ::app::Question* _add = _internal_add_questions();
+  // @@protoc_insertion_point(field_add:app.Questions.questions)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::app::Question >&
+Questions::questions() const {
+  // @@protoc_insertion_point(field_list:app.Questions.questions)
+  return _impl_.questions_;
 }
 
 // -------------------------------------------------------------------
@@ -1042,6 +1859,12 @@ Record::questions() const {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

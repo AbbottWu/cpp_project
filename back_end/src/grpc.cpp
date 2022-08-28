@@ -18,8 +18,6 @@ class RouteImpl final : public TTry::BaseRoute::Service {
 	}
 };
 
-using namespace std;
-
 string echo(string s) {
 	TTry::Message message;
 	message.set_content(s);

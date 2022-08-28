@@ -1,6 +1,25 @@
 syntax = "proto3";
 package app;
 
+service RPCRoute{
+    rpc register(User) returns(IsOK){}
+    rpc login(User) returns(IsOK){}
+    rpc all_questions(RequestQuestions) returns(Questions){}
+    rpc my_questions(RequestQuestions) returns(Questions){}
+    rpc ask_question(Question) returns(IsOK){}
+    rpc answer_question(Question) returns(IsOK){}
+}
+
+message IsOK{
+    bool success = 1;
+}
+
+message RequestQuestions{
+    bool is_answered =1;
+    bool for_user=2;
+    string userId=3;
+}
+
 message User {
     string name = 1;
     string token = 2;
@@ -9,9 +28,16 @@ message User {
 }
 
 message Question{
-    string content=1;
-    string id=2;
-    int32 category=3;
+    string title=1;
+    string content=2;
+    string id=3;
+    int32 category=4;
+    bool answered=5;
+    string answer=6;
+}
+
+message Questions{
+    repeated Question questions=1;
 }
 
 message Record{

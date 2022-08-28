@@ -6,18 +6,6 @@
 
 using namespace std;
 
-class map_id {
-private:
-	string id;
-public:
-	map_id(string s) :id(s) {}
-	inline bool operator()(const Question* q) {
-		if (q->get_id() == id) {
-			return true;
-		}
-		return false;
-	}
-};
 
 ProtoEngine::ProtoEngine(string p) :DataEngine(p) {
 	load();
@@ -55,9 +43,12 @@ bool ProtoEngine::save_questions(vector<Question*> questions) {
 		for (auto i = questions.begin(); i != questions.end(); i++)
 		{
 			auto tmp = record.add_questions();
+			tmp->set_title((*i)->get_title());
 			tmp->set_content((*i)->get_content());
 			tmp->set_id((*i)->get_id());
 			tmp->set_category((*i)->get_category());
+			tmp->set_answered((*i)->is_answered());
+			tmp->set_answer((*i)->get_answer());
 		}
 		return true;
 	}
@@ -76,7 +67,12 @@ vector<User*> ProtoEngine::read_users(vector<Question*> questions) {
 		vector<Question*> one_user_questions(questions_size);
 		for (int j = 0; j < questions_size; j++)
 		{
-			one_user_questions[j] = *find_if(questions.begin(), questions.end(), map_id(one_user.questionsid(j)));
+			one_user_questions[j] = *find_if(questions.begin(), questions.end(), [one_user, j](Question* question) {
+				if (one_user.questionsid(j) == question->get_id()) {
+					return true;
+				}
+				return false;
+				});
 		}
 		users[i] = new User(one_user.name(), one_user.token(), one_user.is_answerer(), one_user_questions);
 	}
@@ -89,7 +85,7 @@ vector<Question*> ProtoEngine::read_questions() {
 	for (int i = 0; i < size; i++)
 	{
 		app::Question j = record.questions(i);
-		questions[i] = new Question(j.content(), j.id(), j.category());
+		questions[i] = new Question(j.title(), j.content(), j.id(), j.category(), j.answered(), j.answer());
 	}
 	return questions;
 }
