@@ -1,4 +1,5 @@
 #include "infrastructure.h"
+#include <locale>
 using namespace std;
 
 int preNUm(unsigned char byte) {
@@ -43,7 +44,7 @@ bool isUtf8(const char* data, int len) {
 
 std::string to_utf8(const std::string& source) {
 	if (!isUtf8(&source[0], source.length())) {
-		std::wstring temp = std::wstring_convert<std::codecvt_utf16<wchar_t> >().from_bytes(source);
+		std::wstring temp = std::wstring_convert<std::codecvt_utf16<wchar_t>>().from_bytes(source);
 		return std::wstring_convert<std::codecvt_utf8<wchar_t> >().to_bytes(temp);
 	}
 	return source;
