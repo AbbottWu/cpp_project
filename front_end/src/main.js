@@ -1,7 +1,8 @@
-const { app, BrowserWindow, Menu } = require('electron');
-const path = require('path')
+import path from 'path';
+import { app, BrowserWindow, Menu } from 'electron';
 import { ipcMain } from 'electron';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
+import { promisify } from 'util';
 
 /* 在异步调用 gRPC 过程中记录调用结果、异常与状态 */
 class Call_Task {
@@ -25,50 +26,50 @@ class Call_Task {
   }
 }
 
-/* grpc 处理类，在整个函数中仅存在单一实例（单例模式）*/
-class App {
-  constructor() {
-    this.prepare_grpc();  // 准备 stub
-    this.call_list = new Object();  // 准备事件记录表，记录异步过程
-  }
+// /* grpc 处理类，在整个函数中仅存在单一实例（单例模式）*/
+// class App {
+//   constructor() {
+//     this.prepare_grpc();  // 准备 stub
+//     this.call_list = new Object();  // 准备事件记录表，记录异步过程
+//   }
 
-  prepare_grpc = () => {
-    let PROTO_PATH = path.join(__dirname, '../../echo.proto')
-    let grpc = require('@grpc/grpc-js');
-    let protoLoader = require('@grpc/proto-loader');
-    // Suggested options for similarity to existing grpc.load behavior
-    let packageDefinition = protoLoader.loadSync(
-      PROTO_PATH,
-      {
-        keepCase: true,
-        longs: String,
-        enums: String,
-        defaults: true,
-        oneofs: true
-      });
-    let protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
-    // The protoDescriptor object has the full package hierarchy
-    let TTry = protoDescriptor.TTry;
-    this.stub = new TTry.BaseRoute('127.0.0.1:12345', grpc.credentials.createInsecure());
-  }
+//   prepare_grpc = () => {
+//     let PROTO_PATH = path.join(__dirname, '../../echo.proto')
+//     let grpc = require('@grpc/grpc-js');
+//     let protoLoader = require('@grpc/proto-loader');
+//     // Suggested options for similarity to existing grpc.load behavior
+//     let packageDefinition = protoLoader.loadSync(
+//       PROTO_PATH,
+//       {
+//         keepCase: true,
+//         longs: String,
+//         enums: String,
+//         defaults: true,
+//         oneofs: true
+//       });
+//     let protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
+//     // The protoDescriptor object has the full package hierarchy
+//     let TTry = protoDescriptor.TTry;
+//     this.stub = new TTry.BaseRoute('127.0.0.1:12345', grpc.credentials.createInsecure());
+//   }
 
-  /* 调用并追加异步 gRPC 调用
-    grpc_name：grpc 函数名（camel 命名）
-    args：所有所需参数
-  */
-  append_grpc_call = async (grpc_name, ...args) => {
-    let new_call = new Call_Task();  // 创建记录
-    this.call_list[new_call.id] = new_call;  // 登记记录
-    runtime_app.stub[grpc_name](args[0], new_call.mapping);  // 传递记录的回调函数
-    return new_call.id;  // 返回记录 ID
-  }
+//   /* 调用并追加异步 gRPC 调用
+//     grpc_name：grpc 函数名（camel 命名）
+//     args：所有所需参数
+//   */
+//   append_grpc_call = async (grpc_name, ...args) => {
+//     let new_call = new Call_Task();  // 创建记录
+//     this.call_list[new_call.id] = new_call;  // 登记记录
+//     runtime_app.stub[grpc_name](args[0], new_call.mapping);  // 传递记录的回调函数
+//     return new_call.id;  // 返回记录 ID
+//   }
 
-  handleQuery = async (id) => {
-    return this.call_list[id].clone_able;
-  }
-}
+//   handleQuery = async (id) => {
+//     return this.call_list[id].clone_able;
+//   }
+// }
 
-let runtime_app = new App(); // 准备实例
+// let runtime_app = new App(); // 准备实例
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 // eslint-disable-next-line global-require
@@ -99,11 +100,6 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  ipcMain.handle('rpc:echo',
-    async (event, ...args) => runtime_app.append_grpc_call("getFeature", { content: args }));
-
-  ipcMain.handle('rpc:query',
-    async (event, id) => runtime_app.handleQuery(id));
 
   createWindow();
 })
