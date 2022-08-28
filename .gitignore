@@ -90,3 +90,7 @@ out/
 
 .vscode/
 .vs/
+.idea/
+build/
+cmake-build-debug/
+CMakeLists.txt
