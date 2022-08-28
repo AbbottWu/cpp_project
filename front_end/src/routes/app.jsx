@@ -20,24 +20,20 @@ function SideBar(props) {
         <div className={block_style}>
             <ul className='flex flex-col'>
                 <li className={items_style} onClick={() => {
-                    navigate('/home/answer_home')
+                    api.state.get('isAnswerer') ? navigate('/home/answer_home') : navigate('/home/question_home')
                 }}>问题列表</li>
-                <li className={items_style}>{api.state.get('isAnswerer') ? '我的回答' : '我的提问'}</li>
+                <li className={items_style + (api.state.get('isAnswerer') ? ' hidden': '')} onClick={()=>{navigate('/home/ask_question')}}>我要提问</li>
+                <li className={items_style} onClick={()=>{
+                    navigate('/home/myroom');
+                }}>{api.state.get('isAnswerer') ? '我的回答' : '我的提问'}</li>
+                <li className={items_style} onClick={()=>{
+                    navigate('/home/my_account')
+                }}> 账户信息 </li>
             </ul>
         </div>
     );
 }
 
-
-
-export function Main_Window(props) {
-    let block_style = 'w-4/5 h-full bg-blue-200 flex flex-col items-center';
-    return (
-        <div className={block_style}>
-            <h1 className='text-2xl justify-self-center'>占位符</h1>
-        </div>
-    );
-}
 
 export function AppWithSidebar() {
     let navigate = useNavigate();
@@ -79,7 +75,7 @@ export function App() {
 
 export function Loading(props){
     let navigate = useNavigate();
-    window.setTimeout(()=>navigate('/home/answer_home'),2000);
+    window.setTimeout(()=>navigate('/home/answer_home'),500);
     return(
         <div className='h-10/11 flex flex-col pt-5 items-center bg-white gap-16 animated animate-fade-in'>
             <h1 className='text-4xl'>正在{props.introduction}，请稍后......</h1>
