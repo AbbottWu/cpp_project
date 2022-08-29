@@ -3,11 +3,13 @@
 
 const path = require('path');
 const { contextBridge, ipcRenderer } = require("electron");
-let map = new Map();
+import { App as grpc_runtime } from './grpc.js'
+let questions = new Map();
 let state = new Map([
     ['isAnswerer',false],
     ['isLogin',false]
 ]);
+let rpc_runtime = new grpc_runtime();
 
 contextBridge.exposeInMainWorld(
     "api",
@@ -21,7 +23,16 @@ contextBridge.exposeInMainWorld(
             const result = await ipcRenderer.invoke('rpc:query', id)
             return result;
         },
-        "questions": map,
+        "questions": questions,
         "state": state, 
+    }
+)
+
+contextBridge.exposeInMainWorld(
+    "grpc",
+    {      
+        "SignUp": async(tmp_user)=>{
+            return await rpc_runtime.SignUp(tmp_user);
+        },  
     }
 )

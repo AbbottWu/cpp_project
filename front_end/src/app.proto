@@ -1,0 +1,46 @@
+syntax = "proto3";
+package app;
+
+service RPCRoute{
+    rpc SignUp(User) returns(IsOK){}
+    rpc Login(User) returns(IsOK){}
+    rpc AllQuestions(RequestQuestions) returns(Questions){}
+    rpc MyQuestions(RequestQuestions) returns(Questions){}
+    rpc AskQuestion(Question) returns(IsOK){}
+    rpc AnswerQuestion(Question) returns(IsOK){}
+}
+
+message IsOK{
+    bool success = 1;
+}
+
+message RequestQuestions{
+    bool is_answered =1;
+    bool for_user=2;
+    string userId=3;
+}
+
+message User {
+    string name = 1;
+    string token = 2;
+    bool is_answerer = 3;
+    repeated string questionsID = 4;
+}
+
+message Question{
+    string title=1;
+    string content=2;
+    string id=3;
+    int32 category=4;
+    bool answered=5;
+    string answer=6;
+}
+
+message Questions{
+    repeated Question questions=1;
+}
+
+message Record{
+    repeated User users = 1;
+    repeated Question questions = 2;
+}
