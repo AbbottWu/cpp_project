@@ -43,3 +43,8 @@ message Record{
     repeated User users = 1;
     repeated Question questions = 2;
 }
+
+message UQpair{
+    User user=1;
+    Question question=2;
+}

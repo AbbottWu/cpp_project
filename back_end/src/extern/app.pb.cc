@@ -109,8 +109,22 @@ struct RecordDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RecordDefaultTypeInternal _Record_default_instance_;
+PROTOBUF_CONSTEXPR UQpair::UQpair(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.user_)*/nullptr
+  , /*decltype(_impl_.question_)*/nullptr
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct UQpairDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UQpairDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UQpairDefaultTypeInternal() {}
+  union {
+    UQpair _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UQpairDefaultTypeInternal _UQpair_default_instance_;
 }  // namespace app
-static ::_pb::Metadata file_level_metadata_app_2eproto[6];
+static ::_pb::Metadata file_level_metadata_app_2eproto[7];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_app_2eproto = nullptr;
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_app_2eproto = nullptr;
 
@@ -167,6 +181,14 @@ const uint32_t TableStruct_app_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(prot
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::app::Record, _impl_.users_),
   PROTOBUF_FIELD_OFFSET(::app::Record, _impl_.questions_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::app::UQpair, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::app::UQpair, _impl_.user_),
+  PROTOBUF_FIELD_OFFSET(::app::UQpair, _impl_.question_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::app::IsOK)},
@@ -175,6 +197,7 @@ static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protode
   { 25, -1, -1, sizeof(::app::Question)},
   { 37, -1, -1, sizeof(::app::Questions)},
   { 44, -1, -1, sizeof(::app::Record)},
+  { 52, -1, -1, sizeof(::app::UQpair)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -184,6 +207,7 @@ static const ::_pb::Message* const file_default_instances[] = {
   &::app::_Question_default_instance_._instance,
   &::app::_Questions_default_instance_._instance,
   &::app::_Record_default_instance_._instance,
+  &::app::_UQpair_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_app_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -197,20 +221,22 @@ const char descriptor_table_protodef_app_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
   "\n\006answer\030\006 \001(\t\"-\n\tQuestions\022 \n\tquestions"
   "\030\001 \003(\0132\r.app.Question\"D\n\006Record\022\030\n\005users"
   "\030\001 \003(\0132\t.app.User\022 \n\tquestions\030\002 \003(\0132\r.a"
-  "pp.Question2\227\002\n\010RPCRoute\022 \n\006SignUp\022\t.app"
-  ".User\032\t.app.IsOK\"\000\022\037\n\005Login\022\t.app.User\032\t"
-  ".app.IsOK\"\000\0227\n\014AllQuestions\022\025.app.Reques"
-  "tQuestions\032\016.app.Questions\"\000\0226\n\013MyQuesti"
-  "ons\022\025.app.RequestQuestions\032\016.app.Questio"
-  "ns\"\000\022)\n\013AskQuestion\022\r.app.Question\032\t.app"
-  ".IsOK\"\000\022,\n\016AnswerQuestion\022\r.app.Question"
-  "\032\t.app.IsOK\"\000b\006proto3"
+  "pp.Question\"B\n\006UQpair\022\027\n\004user\030\001 \001(\0132\t.ap"
+  "p.User\022\037\n\010question\030\002 \001(\0132\r.app.Question2"
+  "\227\002\n\010RPCRoute\022 \n\006SignUp\022\t.app.User\032\t.app."
+  "IsOK\"\000\022\037\n\005Login\022\t.app.User\032\t.app.IsOK\"\000\022"
+  "7\n\014AllQuestions\022\025.app.RequestQuestions\032\016"
+  ".app.Questions\"\000\0226\n\013MyQuestions\022\025.app.Re"
+  "questQuestions\032\016.app.Questions\"\000\022)\n\013AskQ"
+  "uestion\022\r.app.Question\032\t.app.IsOK\"\000\022,\n\016A"
+  "nswerQuestion\022\r.app.Question\032\t.app.IsOK\""
+  "\000b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_app_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_app_2eproto = {
-    false, false, 701, descriptor_table_protodef_app_2eproto,
+    false, false, 769, descriptor_table_protodef_app_2eproto,
     "app.proto",
-    &descriptor_table_app_2eproto_once, nullptr, 0, 6,
+    &descriptor_table_app_2eproto_once, nullptr, 0, 7,
     schemas, file_default_instances, TableStruct_app_2eproto::offsets,
     file_level_metadata_app_2eproto, file_level_enum_descriptors_app_2eproto,
     file_level_service_descriptors_app_2eproto,
@@ -1761,6 +1787,245 @@ void Record::InternalSwap(Record* other) {
       file_level_metadata_app_2eproto[5]);
 }
 
+// ===================================================================
+
+class UQpair::_Internal {
+ public:
+  static const ::app::User& user(const UQpair* msg);
+  static const ::app::Question& question(const UQpair* msg);
+};
+
+const ::app::User&
+UQpair::_Internal::user(const UQpair* msg) {
+  return *msg->_impl_.user_;
+}
+const ::app::Question&
+UQpair::_Internal::question(const UQpair* msg) {
+  return *msg->_impl_.question_;
+}
+UQpair::UQpair(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:app.UQpair)
+}
+UQpair::UQpair(const UQpair& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  UQpair* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_){nullptr}
+    , decltype(_impl_.question_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}};
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_user()) {
+    _this->_impl_.user_ = new ::app::User(*from._impl_.user_);
+  }
+  if (from._internal_has_question()) {
+    _this->_impl_.question_ = new ::app::Question(*from._impl_.question_);
+  }
+  // @@protoc_insertion_point(copy_constructor:app.UQpair)
+}
+
+inline void UQpair::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.user_){nullptr}
+    , decltype(_impl_.question_){nullptr}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+UQpair::~UQpair() {
+  // @@protoc_insertion_point(destructor:app.UQpair)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
+  }
+  SharedDtor();
+}
+
+inline void UQpair::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.user_;
+  if (this != internal_default_instance()) delete _impl_.question_;
+}
+
+void UQpair::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void UQpair::Clear() {
+// @@protoc_insertion_point(message_clear_start:app.UQpair)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.user_ != nullptr) {
+    delete _impl_.user_;
+  }
+  _impl_.user_ = nullptr;
+  if (GetArenaForAllocation() == nullptr && _impl_.question_ != nullptr) {
+    delete _impl_.question_;
+  }
+  _impl_.question_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* UQpair::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // .app.User user = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          ptr = ctx->ParseMessage(_internal_mutable_user(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      // .app.Question question = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_question(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* UQpair::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:app.UQpair)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .app.User user = 1;
+  if (this->_internal_has_user()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, _Internal::user(this),
+        _Internal::user(this).GetCachedSize(), target, stream);
+  }
+
+  // .app.Question question = 2;
+  if (this->_internal_has_question()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::question(this),
+        _Internal::question(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:app.UQpair)
+  return target;
+}
+
+size_t UQpair::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:app.UQpair)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .app.User user = 1;
+  if (this->_internal_has_user()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.user_);
+  }
+
+  // .app.Question question = 2;
+  if (this->_internal_has_question()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.question_);
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UQpair::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    UQpair::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UQpair::GetClassData() const { return &_class_data_; }
+
+
+void UQpair::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<UQpair*>(&to_msg);
+  auto& from = static_cast<const UQpair&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:app.UQpair)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_user()) {
+    _this->_internal_mutable_user()->::app::User::MergeFrom(
+        from._internal_user());
+  }
+  if (from._internal_has_question()) {
+    _this->_internal_mutable_question()->::app::Question::MergeFrom(
+        from._internal_question());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UQpair::CopyFrom(const UQpair& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:app.UQpair)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UQpair::IsInitialized() const {
+  return true;
+}
+
+void UQpair::InternalSwap(UQpair* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UQpair, _impl_.question_)
+      + sizeof(UQpair::_impl_.question_)
+      - PROTOBUF_FIELD_OFFSET(UQpair, _impl_.user_)>(
+          reinterpret_cast<char*>(&_impl_.user_),
+          reinterpret_cast<char*>(&other->_impl_.user_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UQpair::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_app_2eproto_getter, &descriptor_table_app_2eproto_once,
+      file_level_metadata_app_2eproto[6]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace app
 PROTOBUF_NAMESPACE_OPEN
@@ -1787,6 +2052,10 @@ Arena::CreateMaybeMessage< ::app::Questions >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::app::Record*
 Arena::CreateMaybeMessage< ::app::Record >(Arena* arena) {
   return Arena::CreateMessageInternal< ::app::Record >(arena);
+}
+template<> PROTOBUF_NOINLINE ::app::UQpair*
+Arena::CreateMaybeMessage< ::app::UQpair >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::app::UQpair >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 
