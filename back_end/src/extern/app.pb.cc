@@ -36,9 +36,8 @@ struct IsOKDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 IsOKDefaultTypeInternal _IsOK_default_instance_;
 PROTOBUF_CONSTEXPR RequestQuestions::RequestQuestions(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.userid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+    /*decltype(_impl_.user_)*/nullptr
   , /*decltype(_impl_.is_answered_)*/false
-  , /*decltype(_impl_.for_user_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RequestQuestionsDefaultTypeInternal {
   PROTOBUF_CONSTEXPR RequestQuestionsDefaultTypeInternal()
@@ -130,8 +129,7 @@ const uint32_t TableStruct_app_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(prot
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::app::RequestQuestions, _impl_.is_answered_),
-  PROTOBUF_FIELD_OFFSET(::app::RequestQuestions, _impl_.for_user_),
-  PROTOBUF_FIELD_OFFSET(::app::RequestQuestions, _impl_.userid_),
+  PROTOBUF_FIELD_OFFSET(::app::RequestQuestions, _impl_.user_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::app::User, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -173,10 +171,10 @@ const uint32_t TableStruct_app_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(prot
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::app::IsOK)},
   { 7, -1, -1, sizeof(::app::RequestQuestions)},
-  { 16, -1, -1, sizeof(::app::User)},
-  { 26, -1, -1, sizeof(::app::Question)},
-  { 38, -1, -1, sizeof(::app::Questions)},
-  { 45, -1, -1, sizeof(::app::Record)},
+  { 15, -1, -1, sizeof(::app::User)},
+  { 25, -1, -1, sizeof(::app::Question)},
+  { 37, -1, -1, sizeof(::app::Questions)},
+  { 44, -1, -1, sizeof(::app::Record)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -190,27 +188,27 @@ static const ::_pb::Message* const file_default_instances[] = {
 
 const char descriptor_table_protodef_app_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\tapp.proto\022\003app\"\027\n\004IsOK\022\017\n\007success\030\001 \001("
-  "\010\"I\n\020RequestQuestions\022\023\n\013is_answered\030\001 \001"
-  "(\010\022\020\n\010for_user\030\002 \001(\010\022\016\n\006userId\030\003 \001(\t\"M\n\004"
-  "User\022\014\n\004name\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\023\n\013is_"
-  "answerer\030\003 \001(\010\022\023\n\013questionsID\030\004 \003(\t\"j\n\010Q"
-  "uestion\022\r\n\005title\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022"
-  "\n\n\002id\030\003 \001(\t\022\020\n\010category\030\004 \001(\005\022\020\n\010answere"
-  "d\030\005 \001(\010\022\016\n\006answer\030\006 \001(\t\"-\n\tQuestions\022 \n\t"
-  "questions\030\001 \003(\0132\r.app.Question\"D\n\006Record"
-  "\022\030\n\005users\030\001 \003(\0132\t.app.User\022 \n\tquestions\030"
-  "\002 \003(\0132\r.app.Question2\227\002\n\010RPCRoute\022 \n\006Sig"
-  "nUp\022\t.app.User\032\t.app.IsOK\"\000\022\037\n\005Login\022\t.a"
-  "pp.User\032\t.app.IsOK\"\000\0227\n\014AllQuestions\022\025.a"
-  "pp.RequestQuestions\032\016.app.Questions\"\000\0226\n"
-  "\013MyQuestions\022\025.app.RequestQuestions\032\016.ap"
-  "p.Questions\"\000\022)\n\013AskQuestion\022\r.app.Quest"
-  "ion\032\t.app.IsOK\"\000\022,\n\016AnswerQuestion\022\r.app"
-  ".Question\032\t.app.IsOK\"\000b\006proto3"
+  "\010\"@\n\020RequestQuestions\022\023\n\013is_answered\030\001 \001"
+  "(\010\022\027\n\004user\030\002 \001(\0132\t.app.User\"M\n\004User\022\014\n\004n"
+  "ame\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022\023\n\013is_answerer\030"
+  "\003 \001(\010\022\023\n\013questionsID\030\004 \003(\t\"j\n\010Question\022\r"
+  "\n\005title\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022\n\n\002id\030\003 \001"
+  "(\t\022\020\n\010category\030\004 \001(\005\022\020\n\010answered\030\005 \001(\010\022\016"
+  "\n\006answer\030\006 \001(\t\"-\n\tQuestions\022 \n\tquestions"
+  "\030\001 \003(\0132\r.app.Question\"D\n\006Record\022\030\n\005users"
+  "\030\001 \003(\0132\t.app.User\022 \n\tquestions\030\002 \003(\0132\r.a"
+  "pp.Question2\227\002\n\010RPCRoute\022 \n\006SignUp\022\t.app"
+  ".User\032\t.app.IsOK\"\000\022\037\n\005Login\022\t.app.User\032\t"
+  ".app.IsOK\"\000\0227\n\014AllQuestions\022\025.app.Reques"
+  "tQuestions\032\016.app.Questions\"\000\0226\n\013MyQuesti"
+  "ons\022\025.app.RequestQuestions\032\016.app.Questio"
+  "ns\"\000\022)\n\013AskQuestion\022\r.app.Question\032\t.app"
+  ".IsOK\"\000\022,\n\016AnswerQuestion\022\r.app.Question"
+  "\032\t.app.IsOK\"\000b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_app_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_app_2eproto = {
-    false, false, 710, descriptor_table_protodef_app_2eproto,
+    false, false, 701, descriptor_table_protodef_app_2eproto,
     "app.proto",
     &descriptor_table_app_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_app_2eproto::offsets,
@@ -407,8 +405,13 @@ void IsOK::InternalSwap(IsOK* other) {
 
 class RequestQuestions::_Internal {
  public:
+  static const ::app::User& user(const RequestQuestions* msg);
 };
 
+const ::app::User&
+RequestQuestions::_Internal::user(const RequestQuestions* msg) {
+  return *msg->_impl_.user_;
+}
 RequestQuestions::RequestQuestions(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -419,23 +422,15 @@ RequestQuestions::RequestQuestions(const RequestQuestions& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   RequestQuestions* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.userid_){}
+      decltype(_impl_.user_){nullptr}
     , decltype(_impl_.is_answered_){}
-    , decltype(_impl_.for_user_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  _impl_.userid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.userid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (!from._internal_userid().empty()) {
-    _this->_impl_.userid_.Set(from._internal_userid(), 
-      _this->GetArenaForAllocation());
+  if (from._internal_has_user()) {
+    _this->_impl_.user_ = new ::app::User(*from._impl_.user_);
   }
-  ::memcpy(&_impl_.is_answered_, &from._impl_.is_answered_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.for_user_) -
-    reinterpret_cast<char*>(&_impl_.is_answered_)) + sizeof(_impl_.for_user_));
+  _this->_impl_.is_answered_ = from._impl_.is_answered_;
   // @@protoc_insertion_point(copy_constructor:app.RequestQuestions)
 }
 
@@ -444,15 +439,10 @@ inline void RequestQuestions::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.userid_){}
+      decltype(_impl_.user_){nullptr}
     , decltype(_impl_.is_answered_){false}
-    , decltype(_impl_.for_user_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
-  _impl_.userid_.InitDefault();
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-    _impl_.userid_.Set("", GetArenaForAllocation());
-  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 RequestQuestions::~RequestQuestions() {
@@ -466,7 +456,7 @@ RequestQuestions::~RequestQuestions() {
 
 inline void RequestQuestions::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  _impl_.userid_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.user_;
 }
 
 void RequestQuestions::SetCachedSize(int size) const {
@@ -479,10 +469,11 @@ void RequestQuestions::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.userid_.ClearToEmpty();
-  ::memset(&_impl_.is_answered_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.for_user_) -
-      reinterpret_cast<char*>(&_impl_.is_answered_)) + sizeof(_impl_.for_user_));
+  if (GetArenaForAllocation() == nullptr && _impl_.user_ != nullptr) {
+    delete _impl_.user_;
+  }
+  _impl_.user_ = nullptr;
+  _impl_.is_answered_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -500,21 +491,11 @@ const char* RequestQuestions::_InternalParse(const char* ptr, ::_pbi::ParseConte
         } else
           goto handle_unusual;
         continue;
-      // bool for_user = 2;
+      // .app.User user = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.for_user_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_user(), ptr);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // string userId = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
-          auto str = _internal_mutable_userid();
-          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(ptr);
-          CHK_(::_pbi::VerifyUTF8(str, "app.RequestQuestions.userId"));
         } else
           goto handle_unusual;
         continue;
@@ -553,20 +534,11 @@ uint8_t* RequestQuestions::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_is_answered(), target);
   }
 
-  // bool for_user = 2;
-  if (this->_internal_for_user() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(2, this->_internal_for_user(), target);
-  }
-
-  // string userId = 3;
-  if (!this->_internal_userid().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_userid().data(), static_cast<int>(this->_internal_userid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "app.RequestQuestions.userId");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_userid(), target);
+  // .app.User user = 2;
+  if (this->_internal_has_user()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, _Internal::user(this),
+        _Internal::user(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -585,20 +557,15 @@ size_t RequestQuestions::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string userId = 3;
-  if (!this->_internal_userid().empty()) {
+  // .app.User user = 2;
+  if (this->_internal_has_user()) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_userid());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.user_);
   }
 
   // bool is_answered = 1;
   if (this->_internal_is_answered() != 0) {
-    total_size += 1 + 1;
-  }
-
-  // bool for_user = 2;
-  if (this->_internal_for_user() != 0) {
     total_size += 1 + 1;
   }
 
@@ -620,14 +587,12 @@ void RequestQuestions::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_userid().empty()) {
-    _this->_internal_set_userid(from._internal_userid());
+  if (from._internal_has_user()) {
+    _this->_internal_mutable_user()->::app::User::MergeFrom(
+        from._internal_user());
   }
   if (from._internal_is_answered() != 0) {
     _this->_internal_set_is_answered(from._internal_is_answered());
-  }
-  if (from._internal_for_user() != 0) {
-    _this->_internal_set_for_user(from._internal_for_user());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -645,19 +610,13 @@ bool RequestQuestions::IsInitialized() const {
 
 void RequestQuestions::InternalSwap(RequestQuestions* other) {
   using std::swap;
-  auto* lhs_arena = GetArenaForAllocation();
-  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &_impl_.userid_, lhs_arena,
-      &other->_impl_.userid_, rhs_arena
-  );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RequestQuestions, _impl_.for_user_)
-      + sizeof(RequestQuestions::_impl_.for_user_)
-      - PROTOBUF_FIELD_OFFSET(RequestQuestions, _impl_.is_answered_)>(
-          reinterpret_cast<char*>(&_impl_.is_answered_),
-          reinterpret_cast<char*>(&other->_impl_.is_answered_));
+      PROTOBUF_FIELD_OFFSET(RequestQuestions, _impl_.is_answered_)
+      + sizeof(RequestQuestions::_impl_.is_answered_)
+      - PROTOBUF_FIELD_OFFSET(RequestQuestions, _impl_.user_)>(
+          reinterpret_cast<char*>(&_impl_.user_),
+          reinterpret_cast<char*>(&other->_impl_.user_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RequestQuestions::GetMetadata() const {

@@ -345,23 +345,26 @@ class RequestQuestions final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kUserIdFieldNumber = 3,
+    kUserFieldNumber = 2,
     kIsAnsweredFieldNumber = 1,
-    kForUserFieldNumber = 2,
   };
-  // string userId = 3;
-  void clear_userid();
-  const std::string& userid() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_userid(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_userid();
-  PROTOBUF_NODISCARD std::string* release_userid();
-  void set_allocated_userid(std::string* userid);
+  // .app.User user = 2;
+  bool has_user() const;
   private:
-  const std::string& _internal_userid() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_userid(const std::string& value);
-  std::string* _internal_mutable_userid();
+  bool _internal_has_user() const;
   public:
+  void clear_user();
+  const ::app::User& user() const;
+  PROTOBUF_NODISCARD ::app::User* release_user();
+  ::app::User* mutable_user();
+  void set_allocated_user(::app::User* user);
+  private:
+  const ::app::User& _internal_user() const;
+  ::app::User* _internal_mutable_user();
+  public:
+  void unsafe_arena_set_allocated_user(
+      ::app::User* user);
+  ::app::User* unsafe_arena_release_user();
 
   // bool is_answered = 1;
   void clear_is_answered();
@@ -372,15 +375,6 @@ class RequestQuestions final :
   void _internal_set_is_answered(bool value);
   public:
 
-  // bool for_user = 2;
-  void clear_for_user();
-  bool for_user() const;
-  void set_for_user(bool value);
-  private:
-  bool _internal_for_user() const;
-  void _internal_set_for_user(bool value);
-  public:
-
   // @@protoc_insertion_point(class_scope:app.RequestQuestions)
  private:
   class _Internal;
@@ -389,9 +383,8 @@ class RequestQuestions final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr userid_;
+    ::app::User* user_;
     bool is_answered_;
-    bool for_user_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -1215,74 +1208,94 @@ inline void RequestQuestions::set_is_answered(bool value) {
   // @@protoc_insertion_point(field_set:app.RequestQuestions.is_answered)
 }
 
-// bool for_user = 2;
-inline void RequestQuestions::clear_for_user() {
-  _impl_.for_user_ = false;
+// .app.User user = 2;
+inline bool RequestQuestions::_internal_has_user() const {
+  return this != internal_default_instance() && _impl_.user_ != nullptr;
 }
-inline bool RequestQuestions::_internal_for_user() const {
-  return _impl_.for_user_;
+inline bool RequestQuestions::has_user() const {
+  return _internal_has_user();
 }
-inline bool RequestQuestions::for_user() const {
-  // @@protoc_insertion_point(field_get:app.RequestQuestions.for_user)
-  return _internal_for_user();
+inline void RequestQuestions::clear_user() {
+  if (GetArenaForAllocation() == nullptr && _impl_.user_ != nullptr) {
+    delete _impl_.user_;
+  }
+  _impl_.user_ = nullptr;
 }
-inline void RequestQuestions::_internal_set_for_user(bool value) {
-  
-  _impl_.for_user_ = value;
+inline const ::app::User& RequestQuestions::_internal_user() const {
+  const ::app::User* p = _impl_.user_;
+  return p != nullptr ? *p : reinterpret_cast<const ::app::User&>(
+      ::app::_User_default_instance_);
 }
-inline void RequestQuestions::set_for_user(bool value) {
-  _internal_set_for_user(value);
-  // @@protoc_insertion_point(field_set:app.RequestQuestions.for_user)
+inline const ::app::User& RequestQuestions::user() const {
+  // @@protoc_insertion_point(field_get:app.RequestQuestions.user)
+  return _internal_user();
 }
-
-// string userId = 3;
-inline void RequestQuestions::clear_userid() {
-  _impl_.userid_.ClearToEmpty();
-}
-inline const std::string& RequestQuestions::userid() const {
-  // @@protoc_insertion_point(field_get:app.RequestQuestions.userId)
-  return _internal_userid();
-}
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RequestQuestions::set_userid(ArgT0&& arg0, ArgT... args) {
- 
- _impl_.userid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:app.RequestQuestions.userId)
-}
-inline std::string* RequestQuestions::mutable_userid() {
-  std::string* _s = _internal_mutable_userid();
-  // @@protoc_insertion_point(field_mutable:app.RequestQuestions.userId)
-  return _s;
-}
-inline const std::string& RequestQuestions::_internal_userid() const {
-  return _impl_.userid_.Get();
-}
-inline void RequestQuestions::_internal_set_userid(const std::string& value) {
-  
-  _impl_.userid_.Set(value, GetArenaForAllocation());
-}
-inline std::string* RequestQuestions::_internal_mutable_userid() {
-  
-  return _impl_.userid_.Mutable(GetArenaForAllocation());
-}
-inline std::string* RequestQuestions::release_userid() {
-  // @@protoc_insertion_point(field_release:app.RequestQuestions.userId)
-  return _impl_.userid_.Release();
-}
-inline void RequestQuestions::set_allocated_userid(std::string* userid) {
-  if (userid != nullptr) {
+inline void RequestQuestions::unsafe_arena_set_allocated_user(
+    ::app::User* user) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.user_);
+  }
+  _impl_.user_ = user;
+  if (user) {
     
   } else {
     
   }
-  _impl_.userid_.SetAllocated(userid, GetArenaForAllocation());
-#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  if (_impl_.userid_.IsDefault()) {
-    _impl_.userid_.Set("", GetArenaForAllocation());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:app.RequestQuestions.user)
+}
+inline ::app::User* RequestQuestions::release_user() {
+  
+  ::app::User* temp = _impl_.user_;
+  _impl_.user_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
   }
-#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:app.RequestQuestions.userId)
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::app::User* RequestQuestions::unsafe_arena_release_user() {
+  // @@protoc_insertion_point(field_release:app.RequestQuestions.user)
+  
+  ::app::User* temp = _impl_.user_;
+  _impl_.user_ = nullptr;
+  return temp;
+}
+inline ::app::User* RequestQuestions::_internal_mutable_user() {
+  
+  if (_impl_.user_ == nullptr) {
+    auto* p = CreateMaybeMessage<::app::User>(GetArenaForAllocation());
+    _impl_.user_ = p;
+  }
+  return _impl_.user_;
+}
+inline ::app::User* RequestQuestions::mutable_user() {
+  ::app::User* _msg = _internal_mutable_user();
+  // @@protoc_insertion_point(field_mutable:app.RequestQuestions.user)
+  return _msg;
+}
+inline void RequestQuestions::set_allocated_user(::app::User* user) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.user_;
+  }
+  if (user) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(user);
+    if (message_arena != submessage_arena) {
+      user = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, user, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.user_ = user;
+  // @@protoc_insertion_point(field_set_allocated:app.RequestQuestions.user)
 }
 
 // -------------------------------------------------------------------
