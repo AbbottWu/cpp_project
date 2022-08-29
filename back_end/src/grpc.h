@@ -18,8 +18,8 @@ class RouteImpl final : public app::RPCRoute::Service{
     grpc::Status Login(grpc::ServerContext*, app::User const*, app::IsOK*) override;
     grpc::Status AllQuestions(grpc::ServerContext*, app::RequestQuestions const*, app::Questions*) override;
     grpc::Status MyQuestions(grpc::ServerContext*, app::RequestQuestions const*, app::Questions*) override;
-    grpc::Status AskQuestion(grpc::ServerContext*, app::Question const*, app::IsOK*) override;
-    grpc::Status AnswerQuestion(grpc::ServerContext*, app::Question const*, app::IsOK*) override;
+    grpc::Status AskQuestion(grpc::ServerContext*, app::UQpair const*, app::IsOK*) override;
+    grpc::Status AnswerQuestion(grpc::ServerContext*, app::UQpair const*, app::IsOK*) override;
 };
 
 void RunServers();
