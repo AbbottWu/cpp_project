@@ -21,6 +21,8 @@ App& App::get_instance(DataEngine* _engine) {
 
 bool App::local_register(User* tmp_user) {
 	users.push_back(new User(*tmp_user)); // 通过复制构造函数建立持久对象并存入列表
+    engine->save_users(users);
+    engine->save();
 	return true;
 }
 
@@ -83,6 +85,9 @@ bool App::ask_question(pair<User*, Question*> UQpair) {
 	questions.push_back(persist_question);  // 存储持久化对象
 	auto user_iter = find_user(tmp_user);  // 通过临时对象寻找持久对象
 	(*user_iter)->new_question(persist_question);  // 更新持久对象
+    engine->save_users(users);
+    engine->save_questions(questions);
+    engine->save();
 	return true;
 }
 
@@ -93,5 +98,8 @@ bool App::answer_question(pair<User*, Question*> UQpair) {
 	auto question_iter = find_question(tmp_question); // 找到对应的持久对象
 	*(*question_iter) = *tmp_question;  // 通过复制更新持久对象
 	(*find_user(tmp_user))->new_question(*question_iter);  // 查找持久对象并将其更新其问题列表
+    engine->save_users(users);
+    engine->save_questions(questions);
+    engine->save();
 	return true;
 }

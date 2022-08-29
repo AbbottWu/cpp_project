@@ -24,7 +24,7 @@ contextBridge.exposeInMainWorld(
             return result;
         },
         "questions": questions,
-        "state": state, 
+        "state": state,
     }
 )
 
@@ -33,6 +33,23 @@ contextBridge.exposeInMainWorld(
     {      
         "SignUp": async(tmp_user)=>{
             return await rpc_runtime.SignUp(tmp_user);
-        },  
+        },
+        "Login": async(tmp_user)=>{
+            return await rpc_runtime.Login(tmp_user);
+        },
+        "AskQuestion": async(tmp_UQpair)=>{
+            return await rpc_runtime.AskQuestion(tmp_UQpair);
+        },
+        "MyQuestions": async(tmp_user)=>{
+            return await rpc_runtime.MyQuestions({
+                is_answered:false,
+                user:tmp_user
+            });
+        },
+        "AllQuestions": async(answered)=>{
+            return await rpc_runtime.AllQuestions({
+                is_answered:answered,
+            })
+        }
     }
 )

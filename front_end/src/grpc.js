@@ -30,7 +30,7 @@ export class App {
     promisify_grpc = () => {
         this.SignUp = promisify(this.stub.SignUp.bind(this.stub));
         this.Login = promisify(this.stub.Login.bind(this.stub));
-        this.ALLQuestions = promisify(this.stub.AllQuestions.bind(this.stub));
+        this.AllQuestions = promisify(this.stub.AllQuestions.bind(this.stub));
         this.MyQuestions = promisify(this.stub.MyQuestions.bind(this.stub));
         this.AskQuestion = promisify(this.stub.AskQuestion.bind(this.stub));
         this.AnswerQuestion = promisify(this.stub.AnswerQuestion.bind(this.stub));

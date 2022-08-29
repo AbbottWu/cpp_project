@@ -4,8 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { HomePage } from './components.jsx';
 
 export function AnswerHome(porps) {
+    let navigate = useNavigate();
     return (
-        <HomePage title='看看有什么能帮上大家的吧：' />
+        <HomePage title='看看有什么能帮上大家的吧：' navigater={navigate} answered={false} />
     );
 }
 

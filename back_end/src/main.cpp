@@ -9,6 +9,5 @@ int main() {
     DataEngine* runtime_engine = new ProtoEngine("./try.bin");
     App &runtime = App::get_instance(runtime_engine);
     RunServers();
-	cout << "hello" << endl;
 	return 0;
 }

@@ -21,6 +21,8 @@ grpc::Status RouteImpl::SignUp(grpc::ServerContext *, const app::User *input, ap
     if (result) {
         cout << "SignUp Success" << endl;
         output->set_success(true);
+        delete tmp_user;
+        return grpc::Status::OK;
     }
     cout << "SignUp Failed" << endl;
     output->set_success(false);
@@ -37,6 +39,8 @@ grpc::Status RouteImpl::Login(grpc::ServerContext *, const app::User *input, app
     if (result) {
         output->set_success(true);
         cout << "Login Success" << endl;
+        delete tmp_user;
+        return grpc::Status::OK;
     }
     output->set_success(false);
     cout << "Login Failed" << endl;

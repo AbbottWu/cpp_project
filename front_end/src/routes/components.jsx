@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useNavigate } from 'react-router';
+import { useState,useEffect } from 'react';
 
 export function List_Items(props, style, rounded = 'none') {
   const baseStyle = ' flex items-center ';
@@ -48,9 +48,8 @@ export function List_Items(props, style, rounded = 'none') {
   }
 }
 
-export function QuestionCard(question) {
+export function QuestionCard(question,navigate) {
   let style = 'bg-gray-200/50 flex flex-col gap-2 rounded-lg px-4 mx-5 transition ease-out duration-300 cursor-pointer hover:(shadow-lg shadow-gray-400/60)';
-  let navigate = useNavigate();
   return (
     <li key={question.id}>
       <div className={style} onClick={() => {
@@ -65,9 +64,9 @@ export function QuestionCard(question) {
   );
 }
 
-export function QACard(question){
+export function QACard(question,navigate){
   let style = 'bg-gray-200/50 flex flex-col gap-2 rounded-lg px-4 mx-5 transition ease-out duration-300 cursor-pointer hover:(shadow-lg shadow-gray-400/60)';
-  let navigate = useNavigate();
+
   let answer_content;
   if (question.answered) {
     answer_content = question.answer;
@@ -91,37 +90,27 @@ export function QACard(question){
 }
 
 function QuestionList(props) {
-  let questions = [
-    { title: '一个C++报错', content: 'C++ 大作业在编译过程中出现了这个报错，貌似和编译器版本有关系，有谁能帮忙看一下嘛？', id: "asd", answered: true, answer: "测试所用的回答测试所用的回答测试所用的回答测试所用的回答" },
-    { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdf", answered: true, answer: "测试所用的回答测试所用的回答测试所用的回答测试所用的回答" },
-    { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdc", answered: false },
-    { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdd", answered: false },
-    { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asda", answered: false },
-  ]
+  const [questions, useQuestions] = useState(new Array());
+  useEffect(() => {
+      const fn = async () => {
+          const temp = await grpc.AllQuestions(props.answered);
+          useQuestions(temp.questions);
+      };
+      fn();
+  }, []);
   return (
     <ul className='flex flex-col gap-4 overflow-auto pb-5'>
-      {(api.state.get('isAnswerer') ? questions.filter(filter_for_not_answered) : questions.filter(filter_for_answered)).map(QuestionCard)}
+      {console.log(questions.length)}
+      {questions.length!=0 ? questions.map((question)=>QuestionCard(question,props.navigater)):<li key='empty'>暂无数据</li>}
     </ul>
   );
 }
-
-function filter_for_answered(question) {
-  if (question.answered) {
-    return true;
-  } else {
-    return false;
-  }
-}
-function filter_for_not_answered(question) {
-  return (!filter_for_answered(question))
-}
-
 
 export function HomePage(props) {
   return (
     <div className='flex flex-col p-7 w-4/5 h-full gap-5 animated animate-fade-in'>
       <h1 className='text-xl block'>{props.title}</h1>
-      <QuestionList />
+      <QuestionList navigater={props.navigater} answered={props.answered}/>
     </div>
   );
 }

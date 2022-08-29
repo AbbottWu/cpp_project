@@ -6,8 +6,8 @@ service RPCRoute{
     rpc Login(User) returns(IsOK){}
     rpc AllQuestions(RequestQuestions) returns(Questions){}
     rpc MyQuestions(RequestQuestions) returns(Questions){}
-    rpc AskQuestion(Question) returns(IsOK){}
-    rpc AnswerQuestion(Question) returns(IsOK){}
+    rpc AskQuestion(UQpair) returns(IsOK){}
+    rpc AnswerQuestion(UQpair) returns(IsOK){}
 }
 
 message IsOK{
@@ -16,8 +16,7 @@ message IsOK{
 
 message RequestQuestions{
     bool is_answered =1;
-    bool for_user=2;
-    string userId=3;
+    User user=2;
 }
 
 message User {
@@ -43,4 +42,9 @@ message Questions{
 message Record{
     repeated User users = 1;
     repeated Question questions = 2;
+}
+
+message UQpair{
+    User user=1;
+    Question question=2;
 }

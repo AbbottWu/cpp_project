@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'windi.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { HomePage } from './components.jsx';
+import { nanoid } from 'nanoid';
 
 
 export function QuestionHome(props) {
+    let navigate=useNavigate();
     return (
-        <HomePage title='看看大家都提出了哪些问题吧：' />
+        <HomePage title='看看大家都提出了哪些问题吧：' navigater={navigate} answered={true}/>
     )
 }
 
@@ -33,22 +35,57 @@ export function QuestionPage(props) {
 
 export function QuestionAsk(props) {
     let navigate = useNavigate();
+    const [form, useForm] = useState({
+        title: '',
+        content: '',
+    });
     return (
         <div className='flex flex-col p-7 w-4/5 h-full gap-3 animated animate-fade-in'>
-            <input className='text-xl p-2' placeholder='问题简述（标题）'></input>
+            <input className='text-xl p-2' placeholder='问题简述（标题）'
+                onChange={(e) => {
+                    useForm({
+                        title: e.target.value,
+                        content: form.content,
+                    })
+                }}></input>
             <hr></hr>
-            <textarea className='h-full border rounded-md resize-none p-3' placeholder='问题详情'></textarea>
+            <textarea className='h-full border rounded-md resize-none p-3' placeholder='问题详情'
+                onChange={(e) => {
+                    useForm({
+                        title: form.title,
+                        content: e.target.value,
+                    })
+                }}></textarea>
             <button className='w-1/5 p-2 ring-1 ring-indigo-600 bg-white rounded-lg hover:(shadow-lg shadow-indigo-600/60) self-end transition ease-out'
-            onClick={()=>{
-                navigate('/home/ask_finished');
-            }}> 提交  </button>
+                onClick={() => {
+                    let tmp_question = {
+                        title: form.title,
+                        content: form.content,
+                        id: nanoid(12),
+                        category: 1,
+                        answered: false,
+                        answer: ''
+                    }
+                    grpc.AskQuestion({
+                        user: api.state.get('now_user'),
+                        question: tmp_question,
+                    }).then(
+                        (result) => {
+                            api.state.get('alert')('提问成功', 'green');
+                            navigate('/home/ask_finished');
+                        },
+                        (err) => {
+                            api.state.get('alert')('服务器异常', 'red');
+                        }
+                    )
+                }}> 提交  </button>
         </div>
     );
 }
 
 export function AskFinished(props) {
     let navigate = useNavigate();
-    window.setTimeout(() => navigate('/home/question_home'), 1000);
+    window.setTimeout(() => navigate('/home/question_home'), 3000);
 
     return (
         <div className='flex flex-col p-7 w-4/5 h-full gap-5 animated animate-fade-in'>

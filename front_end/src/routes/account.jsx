@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'windi.css'
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { QACard } from './components.jsx';
@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid'
 
 export function Welcome() {
     let navigate = useNavigate();
+    const [form, useForm] = useState({ username: '', token: '' });
     let button_style = 'p-4 h-10 rounded-md flex items-center justify-center border ';
     return (
         <div className='h-10/11 flex flex-col pt-5 items-center bg-white gap-12 animated animate-fade-in'>
@@ -14,25 +15,71 @@ export function Welcome() {
             <div>
                 <div className='flex gap-x-4 mb-8 items-center'>
                     <label className='text-lg'>请输入用户名</label>
-                    <input className='border rounded-md p-2 border-sky-400'></input>
+                    <input className='border rounded-md p-2 border-sky-400'
+                        onChange={(e) => {
+                            useForm({
+                                username: e.target.value,
+                                token: form.token,
+                            })
+                        }}></input>
                 </div>
                 <div className='flex gap-x-4 items-center'>
                     <label className='text-lg'>请输入token</label>
-                    <input className='border rounded-md p-2 border-sky-400'></input>
+                    <input className='border rounded-md p-2 border-sky-400'
+                        onChange={(e) => {
+                            useForm({
+                                username: form.username,
+                                token: e.target.value,
+                            })
+                        }}></input>
                 </div>
             </div>
             <div className='flex w-full justify-center gap-10'>
                 <button className={button_style + 'border-blue-600  hover:(bg-blue-200)'}
                     onClick={() => {
-                        api.state.set('isAnswerer', false);
-                        api.state.set('isLogin', true)
-                        navigate('/home/question_home');
+                        let tmp_user = {
+                            name: form.username,
+                            token: form.token,
+                            is_answerer: false,
+                        }
+                        grpc.Login(tmp_user).then(
+                            (result) => {
+                                if (result.success) {
+                                    api.state.set('isAnswerer', false);
+                                    api.state.set('isLogin', true);
+                                    api.state.set('now_user', tmp_user);
+                                    navigate('/home/question_home');
+                                } else {
+                                    api.state.get('alert')('登录失败，请检查信息后重试', 'yellow')
+                                }
+                            },
+                            (err) => {
+
+                            },
+                        )
                     }}>我要提问！！</button>
                 <button className={button_style + 'border-emerald-600  hover:(bg-emerald-200)'}
                     onClick={() => {
-                        api.state.set('isAnswerer', true);
-                        api.state.set('isLogin', true)
-                        navigate('/onlogin');
+                        let tmp_user = {
+                            name: form.username,
+                            token: form.token,
+                            is_answerer: true,
+                        }
+                        grpc.Login(tmp_user).then(
+                            (result) => {
+                                if (result.success) {
+                                    api.state.set('isAnswerer', false);
+                                    api.state.set('isLogin', true);
+                                    api.state.set('now_user', tmp_user);
+                                    navigate('/home/answer_home');
+                                } else {
+                                    api.state.get('alert')('登录失败，请检查信息后重试', 'yellow')
+                                }
+                            },
+                            (err) => {
+
+                            },
+                        )
                     }}>我能回答！！</button>
             </div>
             <button className={'-mt-8   px-10 py-2 h-10 rounded-md flex items-center justify-center border ' + 'border-pink-600  hover:(bg-pink-200)'}
@@ -46,33 +93,35 @@ export function Welcome() {
 }
 
 export function Myroom(props) {
-    let questions = [
-        { title: '一个C++报错', content: 'C++ 大作业在编译过程中出现了这个报错，貌似和编译器版本有关系，有谁能帮忙看一下嘛？', id: "asd", answered: true, answer: "测试所用的回答测试所用的回答测试所用的回答测试所用的回答" },
-        { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdf", answered: true, answer: "测试所用的回答测试所用的回答测试所用的回答测试所用的回答" },
-        { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdc", answered: false },
-        { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asdd", answered: false },
-        { title: '标题', content: '内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试内容测试', id: "asda", answered: false },
-    ]
+    // let questions = new Array([]);
+    let navigate = useNavigate();
+    const [questions, useQuestions] = useState(new Array());
+    useEffect(() => {
+        const fn = async () => {
+            const temp = await grpc.MyQuestions(api.state.get('now_user'));
+            useQuestions(temp.questions);
+        };
+        fn();
+    }, []);
     return (
         <div className='flex flex-col p-7 w-4/5 h-full gap-5 animated animate-fade-in'>
             <h1 className='text-xl block'>与我有关的问题们：</h1>
             <ul className='flex flex-col gap-4 overflow-auto pb-5'>
-                {questions.map(QACard)}
+                {questions.length!=0 ? questions.map((question)=>QACard(question,navigate)):<li key='empty'>暂无数据</li>}
             </ul>
         </div>
     );
 }
 
 export function MyToken(props) {
-    let username = 'awu';
-    let token = 'trsindg';
     return (
         <div className='flex flex-col p-7 w-4/5 h-full gap-5 animated animate-fade-in'>
             <h1 className='text-2xl'>我的信息</h1>
             <hr></hr>
             <ul>
-                <li className='mb-2'>我的昵称：{username}</li>
-                <li>我的Token：{token}</li>
+                <li className='mb-2'>我的昵称：{api.state.get('now_user').name}</li>
+                <li>我的Token：{api.state.get('now_user').token}</li>
+                <li>我是回答者：{api.state.get('now_user').is_answerer ? '是' : '否'}</li>
             </ul>
         </div>
     );
@@ -100,23 +149,26 @@ export function SignUp(props) {
                         });
                     }}></input>
                 <label className="inline-block text-gray-800">
-                    我是提问者
+                    我是回答者
                 </label>
             </div>
             <button className='p-4 h-10 rounded-md flex items-center justify-center border px-20' onClick={() => {
                 let token = nanoid(8);
                 let params = [['username', form.username,], ['token', token], ['is_answerer', form.is_answerer]];
-                let tmp_user = Object.fromEntries(params);
-                grpc.SignUp(tmp_user).then(
+                grpc.SignUp({
+                    name: form.username,
+                    token: token,
+                    is_answerer: form.is_answerer,
+                }).then(
                     (result) => {
-                        console.log(result)
+                        api.state.get('alert')('注册成功', 'green');
                         navigate({
                             pathname: '/signup_result',
                             search: `?${createSearchParams(params)}`,
                         })
                     },
                     (err) => {
-                        console.log(err);
+                        api.state.get('alert')('出现错误，请再试一次', 'red');
                     }
                 )
             }}>提交</button>
