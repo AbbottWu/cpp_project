@@ -199,18 +199,18 @@ const char descriptor_table_protodef_app_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
   "d\030\005 \001(\010\022\016\n\006answer\030\006 \001(\t\"-\n\tQuestions\022 \n\t"
   "questions\030\001 \003(\0132\r.app.Question\"D\n\006Record"
   "\022\030\n\005users\030\001 \003(\0132\t.app.User\022 \n\tquestions\030"
-  "\002 \003(\0132\r.app.Question2\235\002\n\010RPCRoute\022\"\n\010reg"
-  "ister\022\t.app.User\032\t.app.IsOK\"\000\022\037\n\005login\022\t"
-  ".app.User\032\t.app.IsOK\"\000\0228\n\rall_questions\022"
-  "\025.app.RequestQuestions\032\016.app.Questions\"\000"
-  "\0227\n\014my_questions\022\025.app.RequestQuestions\032"
-  "\016.app.Questions\"\000\022*\n\014ask_question\022\r.app."
-  "Question\032\t.app.IsOK\"\000\022-\n\017answer_question"
-  "\022\r.app.Question\032\t.app.IsOK\"\000b\006proto3"
+  "\002 \003(\0132\r.app.Question2\227\002\n\010RPCRoute\022 \n\006Sig"
+  "nUp\022\t.app.User\032\t.app.IsOK\"\000\022\037\n\005Login\022\t.a"
+  "pp.User\032\t.app.IsOK\"\000\0227\n\014AllQuestions\022\025.a"
+  "pp.RequestQuestions\032\016.app.Questions\"\000\0226\n"
+  "\013MyQuestions\022\025.app.RequestQuestions\032\016.ap"
+  "p.Questions\"\000\022)\n\013AskQuestion\022\r.app.Quest"
+  "ion\032\t.app.IsOK\"\000\022,\n\016AnswerQuestion\022\r.app"
+  ".Question\032\t.app.IsOK\"\000b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_app_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_app_2eproto = {
-    false, false, 716, descriptor_table_protodef_app_2eproto,
+    false, false, 710, descriptor_table_protodef_app_2eproto,
     "app.proto",
     &descriptor_table_app_2eproto_once, nullptr, 0, 6,
     schemas, file_default_instances, TableStruct_app_2eproto::offsets,

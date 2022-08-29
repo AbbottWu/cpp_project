@@ -2,12 +2,12 @@ syntax = "proto3";
 package app;
 
 service RPCRoute{
-    rpc register(User) returns(IsOK){}
-    rpc login(User) returns(IsOK){}
-    rpc all_questions(RequestQuestions) returns(Questions){}
-    rpc my_questions(RequestQuestions) returns(Questions){}
-    rpc ask_question(Question) returns(IsOK){}
-    rpc answer_question(Question) returns(IsOK){}
+    rpc SignUp(User) returns(IsOK){}
+    rpc Login(User) returns(IsOK){}
+    rpc AllQuestions(RequestQuestions) returns(Questions){}
+    rpc MyQuestions(RequestQuestions) returns(Questions){}
+    rpc AskQuestion(Question) returns(IsOK){}
+    rpc AnswerQuestion(Question) returns(IsOK){}
 }
 
 message IsOK{

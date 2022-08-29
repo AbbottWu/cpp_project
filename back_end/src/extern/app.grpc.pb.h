@@ -35,141 +35,141 @@ class RPCRoute final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status register(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> Asyncregister(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncregisterRaw(context, request, cq));
+    virtual ::grpc::Status SignUp(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncSignUp(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncSignUpRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncregister(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncregisterRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncSignUp(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncSignUpRaw(context, request, cq));
     }
-    virtual ::grpc::Status login(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> Asynclogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncloginRaw(context, request, cq));
+    virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncLogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncLoginRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsynclogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncloginRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncLoginRaw(context, request, cq));
     }
-    virtual ::grpc::Status all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> Asyncall_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(Asyncall_questionsRaw(context, request, cq));
+    virtual ::grpc::Status AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> AsyncAllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(AsyncAllQuestionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> PrepareAsyncall_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(PrepareAsyncall_questionsRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> PrepareAsyncAllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(PrepareAsyncAllQuestionsRaw(context, request, cq));
     }
-    virtual ::grpc::Status my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> Asyncmy_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(Asyncmy_questionsRaw(context, request, cq));
+    virtual ::grpc::Status MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> AsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(AsyncMyQuestionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> PrepareAsyncmy_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(PrepareAsyncmy_questionsRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> PrepareAsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(PrepareAsyncMyQuestionsRaw(context, request, cq));
     }
-    virtual ::grpc::Status ask_question(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> Asyncask_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(Asyncask_questionRaw(context, request, cq));
+    virtual ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncAskQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncask_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncask_questionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncAskQuestionRaw(context, request, cq));
     }
-    virtual ::grpc::Status answer_question(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> Asyncanswer_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(Asyncanswer_questionRaw(context, request, cq));
+    virtual ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncAnswerQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncanswer_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncanswer_questionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncAnswerQuestionRaw(context, request, cq));
     }
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void register(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void register(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void ask_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void ask_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void answer_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void answer_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void SignUp(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SignUp(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncregisterRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncregisterRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncloginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* Asyncall_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncall_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* Asyncmy_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncmy_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* Asyncask_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncask_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* Asyncanswer_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncanswer_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncSignUpRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncSignUpRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncLoginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* AsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* AsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status register(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> Asyncregister(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncregisterRaw(context, request, cq));
+    ::grpc::Status SignUp(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncSignUp(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncSignUpRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncregister(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncregisterRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncSignUp(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncSignUpRaw(context, request, cq));
     }
-    ::grpc::Status login(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> Asynclogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncloginRaw(context, request, cq));
+    ::grpc::Status Login(::grpc::ClientContext* context, const ::app::User& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncLogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncLoginRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsynclogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncloginRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncLoginRaw(context, request, cq));
     }
-    ::grpc::Status all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> Asyncall_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(Asyncall_questionsRaw(context, request, cq));
+    ::grpc::Status AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> AsyncAllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(AsyncAllQuestionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> PrepareAsyncall_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(PrepareAsyncall_questionsRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> PrepareAsyncAllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(PrepareAsyncAllQuestionsRaw(context, request, cq));
     }
-    ::grpc::Status my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> Asyncmy_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(Asyncmy_questionsRaw(context, request, cq));
+    ::grpc::Status MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::app::Questions* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> AsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(AsyncMyQuestionsRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> PrepareAsyncmy_questions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(PrepareAsyncmy_questionsRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> PrepareAsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(PrepareAsyncMyQuestionsRaw(context, request, cq));
     }
-    ::grpc::Status ask_question(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> Asyncask_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(Asyncask_questionRaw(context, request, cq));
+    ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncAskQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncask_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncask_questionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncAskQuestionRaw(context, request, cq));
     }
-    ::grpc::Status answer_question(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> Asyncanswer_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(Asyncanswer_questionRaw(context, request, cq));
+    ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncAnswerQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncanswer_question(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncanswer_questionRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncAnswerQuestionRaw(context, request, cq));
     }
     class async final :
       public StubInterface::async_interface {
      public:
-      void register(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void register(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) override;
-      void all_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) override;
-      void my_questions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void ask_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void ask_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void answer_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void answer_question(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void SignUp(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void SignUp(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void Login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void Login(::grpc::ClientContext* context, const ::app::User* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) override;
+      void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) override;
+      void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -181,24 +181,24 @@ class RPCRoute final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncregisterRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncregisterRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncloginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncloginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::Questions>* Asyncall_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncall_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::Questions>* Asyncmy_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncmy_questionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* Asyncask_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncask_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* Asyncanswer_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncanswer_questionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_register_;
-    const ::grpc::internal::RpcMethod rpcmethod_login_;
-    const ::grpc::internal::RpcMethod rpcmethod_all_questions_;
-    const ::grpc::internal::RpcMethod rpcmethod_my_questions_;
-    const ::grpc::internal::RpcMethod rpcmethod_ask_question_;
-    const ::grpc::internal::RpcMethod rpcmethod_answer_question_;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncSignUpRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncSignUpRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncLoginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::app::User& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::Questions>* AsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::Questions>* AsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_SignUp_;
+    const ::grpc::internal::RpcMethod rpcmethod_Login_;
+    const ::grpc::internal::RpcMethod rpcmethod_AllQuestions_;
+    const ::grpc::internal::RpcMethod rpcmethod_MyQuestions_;
+    const ::grpc::internal::RpcMethod rpcmethod_AskQuestion_;
+    const ::grpc::internal::RpcMethod rpcmethod_AnswerQuestion_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -206,817 +206,817 @@ class RPCRoute final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status register(::grpc::ServerContext* context, const ::app::User* request, ::app::IsOK* response);
-    virtual ::grpc::Status login(::grpc::ServerContext* context, const ::app::User* request, ::app::IsOK* response);
-    virtual ::grpc::Status all_questions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
-    virtual ::grpc::Status my_questions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
-    virtual ::grpc::Status ask_question(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
-    virtual ::grpc::Status answer_question(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
+    virtual ::grpc::Status SignUp(::grpc::ServerContext* context, const ::app::User* request, ::app::IsOK* response);
+    virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::app::User* request, ::app::IsOK* response);
+    virtual ::grpc::Status AllQuestions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
+    virtual ::grpc::Status MyQuestions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
+    virtual ::grpc::Status AskQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
+    virtual ::grpc::Status AnswerQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_register : public BaseClass {
+  class WithAsyncMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_register() {
+    WithAsyncMethod_SignUp() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_register() override {
+    ~WithAsyncMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestregister(::grpc::ServerContext* context, ::app::User* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSignUp(::grpc::ServerContext* context, ::app::User* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_login : public BaseClass {
+  class WithAsyncMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_login() {
+    WithAsyncMethod_Login() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_login() override {
+    ~WithAsyncMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestlogin(::grpc::ServerContext* context, ::app::User* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestLogin(::grpc::ServerContext* context, ::app::User* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_all_questions : public BaseClass {
+  class WithAsyncMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_all_questions() {
+    WithAsyncMethod_AllQuestions() {
       ::grpc::Service::MarkMethodAsync(2);
     }
-    ~WithAsyncMethod_all_questions() override {
+    ~WithAsyncMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestall_questions(::grpc::ServerContext* context, ::app::RequestQuestions* request, ::grpc::ServerAsyncResponseWriter< ::app::Questions>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAllQuestions(::grpc::ServerContext* context, ::app::RequestQuestions* request, ::grpc::ServerAsyncResponseWriter< ::app::Questions>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_my_questions : public BaseClass {
+  class WithAsyncMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_my_questions() {
+    WithAsyncMethod_MyQuestions() {
       ::grpc::Service::MarkMethodAsync(3);
     }
-    ~WithAsyncMethod_my_questions() override {
+    ~WithAsyncMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestmy_questions(::grpc::ServerContext* context, ::app::RequestQuestions* request, ::grpc::ServerAsyncResponseWriter< ::app::Questions>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestMyQuestions(::grpc::ServerContext* context, ::app::RequestQuestions* request, ::grpc::ServerAsyncResponseWriter< ::app::Questions>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_ask_question : public BaseClass {
+  class WithAsyncMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_ask_question() {
+    WithAsyncMethod_AskQuestion() {
       ::grpc::Service::MarkMethodAsync(4);
     }
-    ~WithAsyncMethod_ask_question() override {
+    ~WithAsyncMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestask_question(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAskQuestion(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_answer_question : public BaseClass {
+  class WithAsyncMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_answer_question() {
+    WithAsyncMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodAsync(5);
     }
-    ~WithAsyncMethod_answer_question() override {
+    ~WithAsyncMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestanswer_question(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAnswerQuestion(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_register<WithAsyncMethod_login<WithAsyncMethod_all_questions<WithAsyncMethod_my_questions<WithAsyncMethod_ask_question<WithAsyncMethod_answer_question<Service > > > > > > AsyncService;
+  typedef WithAsyncMethod_SignUp<WithAsyncMethod_Login<WithAsyncMethod_AllQuestions<WithAsyncMethod_MyQuestions<WithAsyncMethod_AskQuestion<WithAsyncMethod_AnswerQuestion<Service > > > > > > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_register : public BaseClass {
+  class WithCallbackMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_register() {
+    WithCallbackMethod_SignUp() {
       ::grpc::Service::MarkMethodCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::app::User, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::User* request, ::app::IsOK* response) { return this->register(context, request, response); }));}
-    void SetMessageAllocatorFor_register(
+                   ::grpc::CallbackServerContext* context, const ::app::User* request, ::app::IsOK* response) { return this->SignUp(context, request, response); }));}
+    void SetMessageAllocatorFor_SignUp(
         ::grpc::MessageAllocator< ::app::User, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::User, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_register() override {
+    ~WithCallbackMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* register(
+    virtual ::grpc::ServerUnaryReactor* SignUp(
       ::grpc::CallbackServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_login : public BaseClass {
+  class WithCallbackMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_login() {
+    WithCallbackMethod_Login() {
       ::grpc::Service::MarkMethodCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::app::User, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::User* request, ::app::IsOK* response) { return this->login(context, request, response); }));}
-    void SetMessageAllocatorFor_login(
+                   ::grpc::CallbackServerContext* context, const ::app::User* request, ::app::IsOK* response) { return this->Login(context, request, response); }));}
+    void SetMessageAllocatorFor_Login(
         ::grpc::MessageAllocator< ::app::User, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::User, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_login() override {
+    ~WithCallbackMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* login(
+    virtual ::grpc::ServerUnaryReactor* Login(
       ::grpc::CallbackServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_all_questions : public BaseClass {
+  class WithCallbackMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_all_questions() {
+    WithCallbackMethod_AllQuestions() {
       ::grpc::Service::MarkMethodCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::app::RequestQuestions, ::app::Questions>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response) { return this->all_questions(context, request, response); }));}
-    void SetMessageAllocatorFor_all_questions(
+                   ::grpc::CallbackServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response) { return this->AllQuestions(context, request, response); }));}
+    void SetMessageAllocatorFor_AllQuestions(
         ::grpc::MessageAllocator< ::app::RequestQuestions, ::app::Questions>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::RequestQuestions, ::app::Questions>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_all_questions() override {
+    ~WithCallbackMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* all_questions(
+    virtual ::grpc::ServerUnaryReactor* AllQuestions(
       ::grpc::CallbackServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_my_questions : public BaseClass {
+  class WithCallbackMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_my_questions() {
+    WithCallbackMethod_MyQuestions() {
       ::grpc::Service::MarkMethodCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::app::RequestQuestions, ::app::Questions>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response) { return this->my_questions(context, request, response); }));}
-    void SetMessageAllocatorFor_my_questions(
+                   ::grpc::CallbackServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response) { return this->MyQuestions(context, request, response); }));}
+    void SetMessageAllocatorFor_MyQuestions(
         ::grpc::MessageAllocator< ::app::RequestQuestions, ::app::Questions>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::RequestQuestions, ::app::Questions>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_my_questions() override {
+    ~WithCallbackMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* my_questions(
+    virtual ::grpc::ServerUnaryReactor* MyQuestions(
       ::grpc::CallbackServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_ask_question : public BaseClass {
+  class WithCallbackMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_ask_question() {
+    WithCallbackMethod_AskQuestion() {
       ::grpc::Service::MarkMethodCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->ask_question(context, request, response); }));}
-    void SetMessageAllocatorFor_ask_question(
+                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->AskQuestion(context, request, response); }));}
+    void SetMessageAllocatorFor_AskQuestion(
         ::grpc::MessageAllocator< ::app::Question, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_ask_question() override {
+    ~WithCallbackMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* ask_question(
+    virtual ::grpc::ServerUnaryReactor* AskQuestion(
       ::grpc::CallbackServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_answer_question : public BaseClass {
+  class WithCallbackMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_answer_question() {
+    WithCallbackMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->answer_question(context, request, response); }));}
-    void SetMessageAllocatorFor_answer_question(
+                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->AnswerQuestion(context, request, response); }));}
+    void SetMessageAllocatorFor_AnswerQuestion(
         ::grpc::MessageAllocator< ::app::Question, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
       static_cast<::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_answer_question() override {
+    ~WithCallbackMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* answer_question(
+    virtual ::grpc::ServerUnaryReactor* AnswerQuestion(
       ::grpc::CallbackServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_register<WithCallbackMethod_login<WithCallbackMethod_all_questions<WithCallbackMethod_my_questions<WithCallbackMethod_ask_question<WithCallbackMethod_answer_question<Service > > > > > > CallbackService;
+  typedef WithCallbackMethod_SignUp<WithCallbackMethod_Login<WithCallbackMethod_AllQuestions<WithCallbackMethod_MyQuestions<WithCallbackMethod_AskQuestion<WithCallbackMethod_AnswerQuestion<Service > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_register : public BaseClass {
+  class WithGenericMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_register() {
+    WithGenericMethod_SignUp() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_register() override {
+    ~WithGenericMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_login : public BaseClass {
+  class WithGenericMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_login() {
+    WithGenericMethod_Login() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_login() override {
+    ~WithGenericMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_all_questions : public BaseClass {
+  class WithGenericMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_all_questions() {
+    WithGenericMethod_AllQuestions() {
       ::grpc::Service::MarkMethodGeneric(2);
     }
-    ~WithGenericMethod_all_questions() override {
+    ~WithGenericMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_my_questions : public BaseClass {
+  class WithGenericMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_my_questions() {
+    WithGenericMethod_MyQuestions() {
       ::grpc::Service::MarkMethodGeneric(3);
     }
-    ~WithGenericMethod_my_questions() override {
+    ~WithGenericMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_ask_question : public BaseClass {
+  class WithGenericMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_ask_question() {
+    WithGenericMethod_AskQuestion() {
       ::grpc::Service::MarkMethodGeneric(4);
     }
-    ~WithGenericMethod_ask_question() override {
+    ~WithGenericMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_answer_question : public BaseClass {
+  class WithGenericMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_answer_question() {
+    WithGenericMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodGeneric(5);
     }
-    ~WithGenericMethod_answer_question() override {
+    ~WithGenericMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_register : public BaseClass {
+  class WithRawMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_register() {
+    WithRawMethod_SignUp() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_register() override {
+    ~WithRawMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestregister(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestSignUp(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_login : public BaseClass {
+  class WithRawMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_login() {
+    WithRawMethod_Login() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_login() override {
+    ~WithRawMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestlogin(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestLogin(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_all_questions : public BaseClass {
+  class WithRawMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_all_questions() {
+    WithRawMethod_AllQuestions() {
       ::grpc::Service::MarkMethodRaw(2);
     }
-    ~WithRawMethod_all_questions() override {
+    ~WithRawMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestall_questions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAllQuestions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_my_questions : public BaseClass {
+  class WithRawMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_my_questions() {
+    WithRawMethod_MyQuestions() {
       ::grpc::Service::MarkMethodRaw(3);
     }
-    ~WithRawMethod_my_questions() override {
+    ~WithRawMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestmy_questions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestMyQuestions(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_ask_question : public BaseClass {
+  class WithRawMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_ask_question() {
+    WithRawMethod_AskQuestion() {
       ::grpc::Service::MarkMethodRaw(4);
     }
-    ~WithRawMethod_ask_question() override {
+    ~WithRawMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestask_question(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAskQuestion(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_answer_question : public BaseClass {
+  class WithRawMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_answer_question() {
+    WithRawMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodRaw(5);
     }
-    ~WithRawMethod_answer_question() override {
+    ~WithRawMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void Requestanswer_question(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAnswerQuestion(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_register : public BaseClass {
+  class WithRawCallbackMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_register() {
+    WithRawCallbackMethod_SignUp() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->register(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SignUp(context, request, response); }));
     }
-    ~WithRawCallbackMethod_register() override {
+    ~WithRawCallbackMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* register(
+    virtual ::grpc::ServerUnaryReactor* SignUp(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_login : public BaseClass {
+  class WithRawCallbackMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_login() {
+    WithRawCallbackMethod_Login() {
       ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->login(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Login(context, request, response); }));
     }
-    ~WithRawCallbackMethod_login() override {
+    ~WithRawCallbackMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* login(
+    virtual ::grpc::ServerUnaryReactor* Login(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_all_questions : public BaseClass {
+  class WithRawCallbackMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_all_questions() {
+    WithRawCallbackMethod_AllQuestions() {
       ::grpc::Service::MarkMethodRawCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->all_questions(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AllQuestions(context, request, response); }));
     }
-    ~WithRawCallbackMethod_all_questions() override {
+    ~WithRawCallbackMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* all_questions(
+    virtual ::grpc::ServerUnaryReactor* AllQuestions(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_my_questions : public BaseClass {
+  class WithRawCallbackMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_my_questions() {
+    WithRawCallbackMethod_MyQuestions() {
       ::grpc::Service::MarkMethodRawCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->my_questions(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->MyQuestions(context, request, response); }));
     }
-    ~WithRawCallbackMethod_my_questions() override {
+    ~WithRawCallbackMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* my_questions(
+    virtual ::grpc::ServerUnaryReactor* MyQuestions(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_ask_question : public BaseClass {
+  class WithRawCallbackMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_ask_question() {
+    WithRawCallbackMethod_AskQuestion() {
       ::grpc::Service::MarkMethodRawCallback(4,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ask_question(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AskQuestion(context, request, response); }));
     }
-    ~WithRawCallbackMethod_ask_question() override {
+    ~WithRawCallbackMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* ask_question(
+    virtual ::grpc::ServerUnaryReactor* AskQuestion(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_answer_question : public BaseClass {
+  class WithRawCallbackMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_answer_question() {
+    WithRawCallbackMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodRawCallback(5,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->answer_question(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->AnswerQuestion(context, request, response); }));
     }
-    ~WithRawCallbackMethod_answer_question() override {
+    ~WithRawCallbackMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* answer_question(
+    virtual ::grpc::ServerUnaryReactor* AnswerQuestion(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_register : public BaseClass {
+  class WithStreamedUnaryMethod_SignUp : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_register() {
+    WithStreamedUnaryMethod_SignUp() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::User, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::User, ::app::IsOK>* streamer) {
-                       return this->Streamedregister(context,
+                       return this->StreamedSignUp(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_register() override {
+    ~WithStreamedUnaryMethod_SignUp() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status register(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status SignUp(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedregister(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::User,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedSignUp(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::User,::app::IsOK>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_login : public BaseClass {
+  class WithStreamedUnaryMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_login() {
+    WithStreamedUnaryMethod_Login() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::User, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::User, ::app::IsOK>* streamer) {
-                       return this->Streamedlogin(context,
+                       return this->StreamedLogin(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_login() override {
+    ~WithStreamedUnaryMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::app::User* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedlogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::User,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::User,::app::IsOK>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_all_questions : public BaseClass {
+  class WithStreamedUnaryMethod_AllQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_all_questions() {
+    WithStreamedUnaryMethod_AllQuestions() {
       ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::RequestQuestions, ::app::Questions>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::RequestQuestions, ::app::Questions>* streamer) {
-                       return this->Streamedall_questions(context,
+                       return this->StreamedAllQuestions(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_all_questions() override {
+    ~WithStreamedUnaryMethod_AllQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status all_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status AllQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedall_questions(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::RequestQuestions,::app::Questions>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAllQuestions(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::RequestQuestions,::app::Questions>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_my_questions : public BaseClass {
+  class WithStreamedUnaryMethod_MyQuestions : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_my_questions() {
+    WithStreamedUnaryMethod_MyQuestions() {
       ::grpc::Service::MarkMethodStreamed(3,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::RequestQuestions, ::app::Questions>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::RequestQuestions, ::app::Questions>* streamer) {
-                       return this->Streamedmy_questions(context,
+                       return this->StreamedMyQuestions(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_my_questions() override {
+    ~WithStreamedUnaryMethod_MyQuestions() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status my_questions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
+    ::grpc::Status MyQuestions(::grpc::ServerContext* /*context*/, const ::app::RequestQuestions* /*request*/, ::app::Questions* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedmy_questions(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::RequestQuestions,::app::Questions>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedMyQuestions(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::RequestQuestions,::app::Questions>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_ask_question : public BaseClass {
+  class WithStreamedUnaryMethod_AskQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_ask_question() {
+    WithStreamedUnaryMethod_AskQuestion() {
       ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::Question, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::Question, ::app::IsOK>* streamer) {
-                       return this->Streamedask_question(context,
+                       return this->StreamedAskQuestion(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_ask_question() override {
+    ~WithStreamedUnaryMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status ask_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedask_question(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAskQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_answer_question : public BaseClass {
+  class WithStreamedUnaryMethod_AnswerQuestion : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_answer_question() {
+    WithStreamedUnaryMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
           ::app::Question, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
                      ::app::Question, ::app::IsOK>* streamer) {
-                       return this->Streamedanswer_question(context,
+                       return this->StreamedAnswerQuestion(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_answer_question() override {
+    ~WithStreamedUnaryMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status answer_question(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status Streamedanswer_question(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAnswerQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_register<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_all_questions<WithStreamedUnaryMethod_my_questions<WithStreamedUnaryMethod_ask_question<WithStreamedUnaryMethod_answer_question<Service > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_AllQuestions<WithStreamedUnaryMethod_MyQuestions<WithStreamedUnaryMethod_AskQuestion<WithStreamedUnaryMethod_AnswerQuestion<Service > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_register<WithStreamedUnaryMethod_login<WithStreamedUnaryMethod_all_questions<WithStreamedUnaryMethod_my_questions<WithStreamedUnaryMethod_ask_question<WithStreamedUnaryMethod_answer_question<Service > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_AllQuestions<WithStreamedUnaryMethod_MyQuestions<WithStreamedUnaryMethod_AskQuestion<WithStreamedUnaryMethod_AnswerQuestion<Service > > > > > > StreamedService;
 };
 
 }  // namespace app
