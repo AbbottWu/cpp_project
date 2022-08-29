@@ -63,18 +63,18 @@ class RPCRoute final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>> PrepareAsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>>(PrepareAsyncMyQuestionsRaw(context, request, cq));
     }
-    virtual ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncAskQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncAskQuestionRaw(context, request, cq));
     }
-    virtual ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    virtual ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(AsyncAnswerQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>>(PrepareAsyncAnswerQuestionRaw(context, request, cq));
     }
     class async_interface {
@@ -88,10 +88,10 @@ class RPCRoute final {
       virtual void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) = 0;
       virtual void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -105,10 +105,10 @@ class RPCRoute final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* AsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::Questions>* PrepareAsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -141,18 +141,18 @@ class RPCRoute final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>> PrepareAsyncMyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::Questions>>(PrepareAsyncMyQuestionsRaw(context, request, cq));
     }
-    ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status AskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncAskQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncAskQuestionRaw(context, request, cq));
     }
-    ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    ::grpc::Status AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> AsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(AsyncAnswerQuestionRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>> PrepareAsyncAnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::app::IsOK>>(PrepareAsyncAnswerQuestionRaw(context, request, cq));
     }
     class async final :
@@ -166,10 +166,10 @@ class RPCRoute final {
       void AllQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
       void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, std::function<void(::grpc::Status)>) override;
       void MyQuestions(::grpc::ClientContext* context, const ::app::RequestQuestions* request, ::app::Questions* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
-      void AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)>) override;
+      void AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -189,10 +189,10 @@ class RPCRoute final {
     ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncAllQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::app::Questions>* AsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::app::Questions>* PrepareAsyncMyQuestionsRaw(::grpc::ClientContext* context, const ::app::RequestQuestions& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::app::IsOK>* PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_SignUp_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
     const ::grpc::internal::RpcMethod rpcmethod_AllQuestions_;
@@ -210,8 +210,8 @@ class RPCRoute final {
     virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::app::User* request, ::app::IsOK* response);
     virtual ::grpc::Status AllQuestions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
     virtual ::grpc::Status MyQuestions(::grpc::ServerContext* context, const ::app::RequestQuestions* request, ::app::Questions* response);
-    virtual ::grpc::Status AskQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
-    virtual ::grpc::Status AnswerQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response);
+    virtual ::grpc::Status AskQuestion(::grpc::ServerContext* context, const ::app::UQpair* request, ::app::IsOK* response);
+    virtual ::grpc::Status AnswerQuestion(::grpc::ServerContext* context, const ::app::UQpair* request, ::app::IsOK* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_SignUp : public BaseClass {
@@ -305,11 +305,11 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestAskQuestion(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAskQuestion(::grpc::ServerContext* context, ::app::UQpair* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -325,11 +325,11 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestAnswerQuestion(::grpc::ServerContext* context, ::app::Question* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestAnswerQuestion(::grpc::ServerContext* context, ::app::UQpair* request, ::grpc::ServerAsyncResponseWriter< ::app::IsOK>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -449,25 +449,25 @@ class RPCRoute final {
    public:
     WithCallbackMethod_AskQuestion() {
       ::grpc::Service::MarkMethodCallback(4,
-          new ::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>(
+          new ::grpc::internal::CallbackUnaryHandler< ::app::UQpair, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->AskQuestion(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::app::UQpair* request, ::app::IsOK* response) { return this->AskQuestion(context, request, response); }));}
     void SetMessageAllocatorFor_AskQuestion(
-        ::grpc::MessageAllocator< ::app::Question, ::app::IsOK>* allocator) {
+        ::grpc::MessageAllocator< ::app::UQpair, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::app::UQpair, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_AskQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* AskQuestion(
-      ::grpc::CallbackServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_AnswerQuestion : public BaseClass {
@@ -476,25 +476,25 @@ class RPCRoute final {
    public:
     WithCallbackMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodCallback(5,
-          new ::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>(
+          new ::grpc::internal::CallbackUnaryHandler< ::app::UQpair, ::app::IsOK>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::app::Question* request, ::app::IsOK* response) { return this->AnswerQuestion(context, request, response); }));}
+                   ::grpc::CallbackServerContext* context, const ::app::UQpair* request, ::app::IsOK* response) { return this->AnswerQuestion(context, request, response); }));}
     void SetMessageAllocatorFor_AnswerQuestion(
-        ::grpc::MessageAllocator< ::app::Question, ::app::IsOK>* allocator) {
+        ::grpc::MessageAllocator< ::app::UQpair, ::app::IsOK>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::app::Question, ::app::IsOK>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::app::UQpair, ::app::IsOK>*>(handler)
               ->SetMessageAllocator(allocator);
     }
     ~WithCallbackMethod_AnswerQuestion() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* AnswerQuestion(
-      ::grpc::CallbackServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/)  { return nullptr; }
   };
   typedef WithCallbackMethod_SignUp<WithCallbackMethod_Login<WithCallbackMethod_AllQuestions<WithCallbackMethod_MyQuestions<WithCallbackMethod_AskQuestion<WithCallbackMethod_AnswerQuestion<Service > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
@@ -578,7 +578,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -595,7 +595,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -692,7 +692,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -712,7 +712,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -823,7 +823,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -845,7 +845,7 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -968,10 +968,10 @@ class RPCRoute final {
     WithStreamedUnaryMethod_AskQuestion() {
       ::grpc::Service::MarkMethodStreamed(4,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::app::Question, ::app::IsOK>(
+          ::app::UQpair, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::app::Question, ::app::IsOK>* streamer) {
+                     ::app::UQpair, ::app::IsOK>* streamer) {
                        return this->StreamedAskQuestion(context,
                          streamer);
                   }));
@@ -980,12 +980,12 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AskQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedAskQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAskQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::UQpair,::app::IsOK>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_AnswerQuestion : public BaseClass {
@@ -995,10 +995,10 @@ class RPCRoute final {
     WithStreamedUnaryMethod_AnswerQuestion() {
       ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::app::Question, ::app::IsOK>(
+          ::app::UQpair, ::app::IsOK>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::app::Question, ::app::IsOK>* streamer) {
+                     ::app::UQpair, ::app::IsOK>* streamer) {
                        return this->StreamedAnswerQuestion(context,
                          streamer);
                   }));
@@ -1007,12 +1007,12 @@ class RPCRoute final {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::Question* /*request*/, ::app::IsOK* /*response*/) override {
+    ::grpc::Status AnswerQuestion(::grpc::ServerContext* /*context*/, const ::app::UQpair* /*request*/, ::app::IsOK* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedAnswerQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::Question,::app::IsOK>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedAnswerQuestion(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::app::UQpair,::app::IsOK>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_SignUp<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_AllQuestions<WithStreamedUnaryMethod_MyQuestions<WithStreamedUnaryMethod_AskQuestion<WithStreamedUnaryMethod_AnswerQuestion<Service > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;

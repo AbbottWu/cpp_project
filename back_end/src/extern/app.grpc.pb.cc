@@ -137,46 +137,46 @@ void RPCRoute::Stub::async::MyQuestions(::grpc::ClientContext* context, const ::
   return result;
 }
 
-::grpc::Status RPCRoute::Stub::AskQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AskQuestion_, context, request, response);
+::grpc::Status RPCRoute::Stub::AskQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AskQuestion_, context, request, response);
 }
 
-void RPCRoute::Stub::async::AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AskQuestion_, context, request, response, std::move(f));
+void RPCRoute::Stub::async::AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AskQuestion_, context, request, response, std::move(f));
 }
 
-void RPCRoute::Stub::async::AskQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) {
+void RPCRoute::Stub::async::AskQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AskQuestion_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::app::IsOK, ::app::Question, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_AskQuestion_, context, request);
+::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::PrepareAsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::app::IsOK, ::app::UQpair, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_AskQuestion_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::AsyncAskQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncAskQuestionRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status RPCRoute::Stub::AnswerQuestion(::grpc::ClientContext* context, const ::app::Question& request, ::app::IsOK* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AnswerQuestion_, context, request, response);
+::grpc::Status RPCRoute::Stub::AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair& request, ::app::IsOK* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_AnswerQuestion_, context, request, response);
 }
 
-void RPCRoute::Stub::async::AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AnswerQuestion_, context, request, response, std::move(f));
+void RPCRoute::Stub::async::AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AnswerQuestion_, context, request, response, std::move(f));
 }
 
-void RPCRoute::Stub::async::AnswerQuestion(::grpc::ClientContext* context, const ::app::Question* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) {
+void RPCRoute::Stub::async::AnswerQuestion(::grpc::ClientContext* context, const ::app::UQpair* request, ::app::IsOK* response, ::grpc::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_AnswerQuestion_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::app::IsOK, ::app::Question, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_AnswerQuestion_, context, request);
+::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::PrepareAsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::app::IsOK, ::app::UQpair, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_AnswerQuestion_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::Question& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::app::IsOK>* RPCRoute::Stub::AsyncAnswerQuestionRaw(::grpc::ClientContext* context, const ::app::UQpair& request, ::grpc::CompletionQueue* cq) {
   auto* result =
     this->PrepareAsyncAnswerQuestionRaw(context, request, cq);
   result->StartCall();
@@ -227,20 +227,20 @@ RPCRoute::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RPCRoute_method_names[4],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RPCRoute::Service, ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< RPCRoute::Service, ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RPCRoute::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::app::Question* req,
+             const ::app::UQpair* req,
              ::app::IsOK* resp) {
                return service->AskQuestion(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RPCRoute_method_names[5],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< RPCRoute::Service, ::app::Question, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< RPCRoute::Service, ::app::UQpair, ::app::IsOK, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](RPCRoute::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::app::Question* req,
+             const ::app::UQpair* req,
              ::app::IsOK* resp) {
                return service->AnswerQuestion(ctx, req, resp);
              }, this)));
@@ -277,14 +277,14 @@ RPCRoute::Service::~Service() {
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RPCRoute::Service::AskQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response) {
+::grpc::Status RPCRoute::Service::AskQuestion(::grpc::ServerContext* context, const ::app::UQpair* request, ::app::IsOK* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status RPCRoute::Service::AnswerQuestion(::grpc::ServerContext* context, const ::app::Question* request, ::app::IsOK* response) {
+::grpc::Status RPCRoute::Service::AnswerQuestion(::grpc::ServerContext* context, const ::app::UQpair* request, ::app::IsOK* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -223,18 +223,18 @@ const char descriptor_table_protodef_app_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
   "\030\001 \003(\0132\t.app.User\022 \n\tquestions\030\002 \003(\0132\r.a"
   "pp.Question\"B\n\006UQpair\022\027\n\004user\030\001 \001(\0132\t.ap"
   "p.User\022\037\n\010question\030\002 \001(\0132\r.app.Question2"
-  "\227\002\n\010RPCRoute\022 \n\006SignUp\022\t.app.User\032\t.app."
+  "\223\002\n\010RPCRoute\022 \n\006SignUp\022\t.app.User\032\t.app."
   "IsOK\"\000\022\037\n\005Login\022\t.app.User\032\t.app.IsOK\"\000\022"
   "7\n\014AllQuestions\022\025.app.RequestQuestions\032\016"
   ".app.Questions\"\000\0226\n\013MyQuestions\022\025.app.Re"
-  "questQuestions\032\016.app.Questions\"\000\022)\n\013AskQ"
-  "uestion\022\r.app.Question\032\t.app.IsOK\"\000\022,\n\016A"
-  "nswerQuestion\022\r.app.Question\032\t.app.IsOK\""
-  "\000b\006proto3"
+  "questQuestions\032\016.app.Questions\"\000\022\'\n\013AskQ"
+  "uestion\022\013.app.UQpair\032\t.app.IsOK\"\000\022*\n\016Ans"
+  "werQuestion\022\013.app.UQpair\032\t.app.IsOK\"\000b\006p"
+  "roto3"
   ;
 static ::_pbi::once_flag descriptor_table_app_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_app_2eproto = {
-    false, false, 769, descriptor_table_protodef_app_2eproto,
+    false, false, 765, descriptor_table_protodef_app_2eproto,
     "app.proto",
     &descriptor_table_app_2eproto_once, nullptr, 0, 7,
     schemas, file_default_instances, TableStruct_app_2eproto::offsets,

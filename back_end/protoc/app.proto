@@ -6,8 +6,8 @@ service RPCRoute{
     rpc Login(User) returns(IsOK){}
     rpc AllQuestions(RequestQuestions) returns(Questions){}
     rpc MyQuestions(RequestQuestions) returns(Questions){}
-    rpc AskQuestion(Question) returns(IsOK){}
-    rpc AnswerQuestion(Question) returns(IsOK){}
+    rpc AskQuestion(UQpair) returns(IsOK){}
+    rpc AnswerQuestion(UQpair) returns(IsOK){}
 }
 
 message IsOK{
