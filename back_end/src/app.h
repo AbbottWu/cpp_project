@@ -1,10 +1,12 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <grpcpp/server.h>
 #include "question.h"
 #include "user.h"
 #include "data_engine.h"
 #include "spdlog/spdlog.h"
+#include "grpc.h"
 
 
 using namespace std;
@@ -23,7 +25,10 @@ public:
 	vector<User*>::iterator find_user(User*);
 	vector<Question*>::iterator find_question(Question*);
     std::unique_ptr<spdlog::logger> logger;
+    std::unique_ptr<grpc::Server> server;
+    void RunServer();
 	~App();
+
 private:
 	DataEngine* engine;
 	App(DataEngine*);

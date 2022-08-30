@@ -21,5 +21,3 @@ class RouteImpl final : public app::RPCRoute::Service{
     grpc::Status AskQuestion(grpc::ServerContext*, app::UQpair const*, app::IsOK*) override;
     grpc::Status AnswerQuestion(grpc::ServerContext*, app::UQpair const*, app::IsOK*) override;
 };
-
-void prepareServer();

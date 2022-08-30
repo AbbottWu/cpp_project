@@ -117,15 +117,3 @@ grpc::Status RouteImpl::AnswerQuestion(grpc::ServerContext *, const app::UQpair 
     runtime.logger->info("AnswerQuestion() Failed");
     return grpc::Status::OK;
 }
-
-extern void prepareServer() {
-    std::string server_address = "127.0.0.1:12345";
-    RouteImpl service;
-    grpc::ServerBuilder builder;
-    builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
-    builder.RegisterService(&service);
-    std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
-    App &runtime = App::get_instance(nullptr);
-    runtime.logger->info("Server listened on {}",server_address);
-    server->Wait();
-}
