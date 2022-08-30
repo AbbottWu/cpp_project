@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'windi.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { HomePage } from './components.jsx';
@@ -13,6 +13,7 @@ export function AnswerHome(porps) {
 export function AnswerPage(props) {
     let params = useParams();
     let navigate = useNavigate();
+    const [answer, useAnswer] = useState('');
     if (api.questions.get(params.questionId)) {
         let question = api.questions.get(params.questionId);
         return (
@@ -20,10 +21,33 @@ export function AnswerPage(props) {
                 <h1 className='text-xl'>{question.title}</h1>
                 <hr></hr>
                 <p className='w-full h-4/5 overflow-auto'>{question.content}</p>
-                <textarea className='h-2/5 border rounded-md resize-none p-3'></textarea>
+                <textarea className='h-2/5 border rounded-md resize-none p-3'
+                    onChange={(e) => {
+                        useAnswer(e.target.value);
+                    }}
+                ></textarea>
                 <button className='border rounded-md py-2 hover:(shadow-sm shadow-green-300)'
                     onClick={() => {
-                        navigate('/home/answer_finished')
+                        let tmp_question = {
+                            title: question.title,
+                            content: question.content,
+                            id: params.questionId,
+                            category: 1,
+                            answered: true,
+                            answer: answer,
+                        };
+                        grpc.AnswerQuestion({
+                            user: api.state.get('now_user'),
+                            question: tmp_question,
+                        }).then(
+                            (result)=>{
+                                api.state.get('alert')('回答成功', 'green');
+                                navigate('/home/answer_finished')
+                            },
+                            (error)=>{
+                                api.state.get('alert')('服务器异常', 'red');
+                            }
+                        )
                     }}>提交</button>
             </div>
         )
@@ -37,7 +61,7 @@ export function AnswerPage(props) {
 
 export function AnswerFinished(props) {
     let navigate = useNavigate();
-    window.setTimeout(() => navigate('/home/answer_home'), 2000);
+    window.setTimeout(() => navigate('/home/answer_home'), 3000);
 
     return (
         <div className='flex flex-col p-7 w-4/5 h-full gap-5 animated animate-fade-in'>

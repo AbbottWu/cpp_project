@@ -68,7 +68,7 @@ export function Welcome() {
                         grpc.Login(tmp_user).then(
                             (result) => {
                                 if (result.success) {
-                                    api.state.set('isAnswerer', false);
+                                    api.state.set('isAnswerer', true);
                                     api.state.set('isLogin', true);
                                     api.state.set('now_user', tmp_user);
                                     navigate('/home/answer_home');

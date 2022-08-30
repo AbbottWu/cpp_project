@@ -4,6 +4,8 @@
 #include "question.h"
 #include "user.h"
 #include "data_engine.h"
+#include "spdlog/spdlog.h"
+
 
 using namespace std;
 class App {
@@ -20,8 +22,8 @@ public:
 	bool answer_question(pair<User*, Question*>);
 	vector<User*>::iterator find_user(User*);
 	vector<Question*>::iterator find_question(Question*);
+    std::unique_ptr<spdlog::logger> logger;
 	~App();
-
 private:
 	DataEngine* engine;
 	App(DataEngine*);

@@ -1,13 +1,29 @@
 #include <iostream>
 #include "app.h"
 #include <algorithm>
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/rotating_file_sink.h"
+
 
 using namespace std;
 
 App::App(DataEngine* _engine) {
-	engine = _engine;
+    auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+    console_sink->set_level(spdlog::level::info);
+
+    auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("./my_log.txt", 1024*1024*10, 3);
+    file_sink->set_level(spdlog::level::trace);
+
+    unique_ptr<spdlog::logger> tmp_point(new spdlog::logger("Server", {console_sink, file_sink}));
+    logger = std::move(tmp_point);
+
+    logger->set_level(spdlog::level::trace);
+    logger->warn("Logger created. Log file can be found at ./my_log.txt");
+
+    engine = _engine;
 	questions = engine->read_questions();
 	users = engine->read_users(questions);
+    // Create a file rotating logger with 5mb size max and 3 rotated files
 }
 
 App::~App() {

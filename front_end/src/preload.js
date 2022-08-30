@@ -6,8 +6,8 @@ const { contextBridge, ipcRenderer } = require("electron");
 import { App as grpc_runtime } from './grpc.js'
 let questions = new Map();
 let state = new Map([
-    ['isAnswerer',false],
-    ['isLogin',false]
+    ['isAnswerer', false],
+    ['isLogin', false]
 ]);
 let rpc_runtime = new grpc_runtime();
 
@@ -30,26 +30,29 @@ contextBridge.exposeInMainWorld(
 
 contextBridge.exposeInMainWorld(
     "grpc",
-    {      
-        "SignUp": async(tmp_user)=>{
+    {
+        "SignUp": async (tmp_user) => {
             return await rpc_runtime.SignUp(tmp_user);
         },
-        "Login": async(tmp_user)=>{
+        "Login": async (tmp_user) => {
             return await rpc_runtime.Login(tmp_user);
         },
-        "AskQuestion": async(tmp_UQpair)=>{
+        "AskQuestion": async (tmp_UQpair) => {
             return await rpc_runtime.AskQuestion(tmp_UQpair);
         },
-        "MyQuestions": async(tmp_user)=>{
+        "MyQuestions": async (tmp_user) => {
             return await rpc_runtime.MyQuestions({
-                is_answered:false,
-                user:tmp_user
+                is_answered: false,
+                user: tmp_user
             });
         },
-        "AllQuestions": async(answered)=>{
+        "AllQuestions": async (answered) => {
             return await rpc_runtime.AllQuestions({
-                is_answered:answered,
-            })
+                is_answered: answered,
+            });
+        },
+        "AnswerQuestion": async (tmp_UQpair) => {
+            return await rpc_runtime.AnswerQuestion(tmp_UQpair);
         }
     }
 )
