@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "infrastructure.h"
+#include <memory>
 using namespace std;
 
 class Question {

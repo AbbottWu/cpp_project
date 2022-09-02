@@ -15,19 +15,17 @@ Question *create_tmp_question_from_proto(const app::Question *proto_question) {
 }
 
 grpc::Status RouteImpl::SignUp(grpc::ServerContext *, const app::User *input, app::IsOK *output) {
-    User *tmp_user = create_tmp_user_from_proto(input);
+    shared_ptr<User> tmp_user = shared_ptr<User>( create_tmp_user_from_proto(input));
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("SignUp() Called");
     bool result = runtime.local_register(tmp_user);
     if (result) {
         runtime.logger->info("SignUp() Succeed");
         output->set_success(true);
-        delete tmp_user;
         return grpc::Status::OK;
     }
     runtime.logger->info("SignUp() failed");
     output->set_success(false);
-    delete tmp_user;
     return grpc::Status::OK;
 }
 
@@ -35,17 +33,15 @@ grpc::Status RouteImpl::SignUp(grpc::ServerContext *, const app::User *input, ap
 grpc::Status RouteImpl::Login(grpc::ServerContext *, const app::User *input, app::IsOK *output) {
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("Login() Called");
-    User *tmp_user = create_tmp_user_from_proto(input);
+    shared_ptr<User> tmp_user = shared_ptr<User>(create_tmp_user_from_proto(input));
     bool result = runtime.local_login(tmp_user);
     if (result) {
         output->set_success(true);
         runtime.logger->info("Login() Succeed");
-        delete tmp_user;
         return grpc::Status::OK;
     }
     output->set_success(false);
     runtime.logger->info("Login() Failed");
-    delete tmp_user;
     return grpc::Status::OK;
 }
 
@@ -70,7 +66,7 @@ RouteImpl::AllQuestions(grpc::ServerContext *, const app::RequestQuestions *inpu
 grpc::Status RouteImpl::MyQuestions(grpc::ServerContext *, const app::RequestQuestions *input, app::Questions *output) {
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("MyQuestions() Called");
-    auto tmp_user = create_tmp_user_from_proto(&input->user());
+    auto tmp_user = shared_ptr<User>(create_tmp_user_from_proto(&input->user()));
     auto tmp_questions = runtime.my_questions(tmp_user);
     for (auto question: tmp_questions) {
         auto one_question = output->add_questions();
@@ -81,15 +77,14 @@ grpc::Status RouteImpl::MyQuestions(grpc::ServerContext *, const app::RequestQue
         one_question->set_answered(question->is_answered());
         one_question->set_answer(question->get_answer());
     }
-    delete tmp_user;
     runtime.logger->info("MyQuestions() Succeed");
 
     return grpc::Status::OK;
 }
 
 grpc::Status RouteImpl::AskQuestion(grpc::ServerContext *, const app::UQpair *input, app::IsOK *output) {
-    auto tmp_question = create_tmp_question_from_proto(&input->question());
-    auto tmp_user = create_tmp_user_from_proto(&input->user());
+    auto tmp_question = shared_ptr<Question>(create_tmp_question_from_proto(&input->question()));
+    auto tmp_user = shared_ptr<User>(create_tmp_user_from_proto(&input->user()));
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("AskQuestion() Called");
 
@@ -105,8 +100,8 @@ grpc::Status RouteImpl::AskQuestion(grpc::ServerContext *, const app::UQpair *in
 
 grpc::Status RouteImpl::AnswerQuestion(grpc::ServerContext *, const app::UQpair *input, app::IsOK *output) {
     cout << "AskQuestion() Called" << endl;
-    auto tmp_question = create_tmp_question_from_proto(&input->question());
-    auto tmp_user = create_tmp_user_from_proto(&input->user());
+    auto tmp_question = shared_ptr<Question>(create_tmp_question_from_proto(&input->question()));
+    auto tmp_user = shared_ptr<User>(create_tmp_user_from_proto(&input->user()));
     App &runtime = App::get_instance(nullptr);
     if (runtime.answer_question(make_pair(tmp_user, tmp_question))) {
         output->set_success(true);

@@ -16,14 +16,14 @@ class App {
 
 public:
 	static App& get_instance(DataEngine*);
-	bool local_register(User*);
-	bool local_login(User*);
-	vector<Question*> all_questions(bool);
-	vector<Question*> my_questions(User*);
-	bool ask_question(pair<User*, Question*>);
-	bool answer_question(pair<User*, Question*>);
-	vector<User*>::iterator find_user(User*);
-	vector<Question*>::iterator find_question(Question*);
+	bool local_register(shared_ptr<User>);
+	bool local_login(shared_ptr<User>);
+	vector<shared_ptr<Question>> all_questions(bool);
+	vector<shared_ptr<Question>> my_questions(shared_ptr<User>);
+	bool ask_question(pair<shared_ptr<User>, shared_ptr<Question>>);
+	bool answer_question(pair<shared_ptr<User>, shared_ptr<Question>>);
+	vector<shared_ptr<User>>::iterator find_user(shared_ptr<User>);
+	vector<shared_ptr<Question>>::iterator find_question(shared_ptr<Question>);
     std::unique_ptr<spdlog::logger> logger;
     std::unique_ptr<grpc::Server> server;
     void RunServer();
@@ -34,6 +34,6 @@ private:
 	App(DataEngine*);
 	App(const App&) = delete;
 	const App& operator=(const App&) = delete;
-	vector<User*> users;
-	vector<Question*> questions;
+	vector<shared_ptr<User>> users;
+	vector<shared_ptr<Question>> questions;
 };

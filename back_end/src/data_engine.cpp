@@ -11,7 +11,7 @@ ProtoEngine::ProtoEngine(string p) :DataEngine(p) {
 	load();
 }
 
-bool ProtoEngine::save_users(vector<User*> users) {
+bool ProtoEngine::save_users(vector<shared_ptr<User>> users) {
 	try
 	{
 		record.clear_users();
@@ -36,7 +36,7 @@ bool ProtoEngine::save_users(vector<User*> users) {
 	return false;
 }
 
-bool ProtoEngine::save_questions(vector<Question*> questions) {
+bool ProtoEngine::save_questions(vector<shared_ptr<Question>> questions) {
 	try
 	{
 		record.clear_questions();
@@ -58,34 +58,34 @@ bool ProtoEngine::save_questions(vector<Question*> questions) {
 	}
 	return false;
 }
-vector<User*> ProtoEngine::read_users(vector<Question*> questions) {
+vector<shared_ptr<User>> ProtoEngine::read_users(vector<shared_ptr<Question>> questions) {
 	int size = record.users_size();
-	vector<User*> users(size);
+	vector<shared_ptr<User>> users(size);
 	for (int i = 0; i < size; i++) {
 		app::User one_user = record.users(i);
 		int questions_size = one_user.questionsid_size();
-		vector<Question*> one_user_questions(questions_size);
+		vector<shared_ptr<Question>> one_user_questions(questions_size);
 		for (int j = 0; j < questions_size; j++)
 		{
-			one_user_questions[j] = *find_if(questions.begin(), questions.end(), [one_user, j](Question* question) {
+			one_user_questions[j] = *find_if(questions.begin(), questions.end(), [one_user, j](shared_ptr<Question> question) {
 				if (one_user.questionsid(j) == question->get_id()) {
 					return true;
 				}
 				return false;
 				});
 		}
-		users[i] = new User(one_user.name(), one_user.token(), one_user.is_answerer(), one_user_questions);
+		users[i] = shared_ptr<User> (new User(one_user.name(), one_user.token(), one_user.is_answerer(), one_user_questions));
 	}
 	return users;
 }
 
-vector<Question*> ProtoEngine::read_questions() {
+vector<shared_ptr<Question>> ProtoEngine::read_questions() {
 	int size = record.questions_size();
-	vector<Question*> questions(size);
+	vector<shared_ptr<Question>> questions(size);
 	for (int i = 0; i < size; i++)
 	{
 		app::Question j = record.questions(i);
-		questions[i] = new Question(j.title(), j.content(), j.id(), j.category(), j.answered(), j.answer());
+		questions[i] =shared_ptr<Question>( new Question(j.title(), j.content(), j.id(), j.category(), j.answered(), j.answer()));
 	}
 	return questions;
 }

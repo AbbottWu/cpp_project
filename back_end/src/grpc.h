@@ -9,7 +9,7 @@
 #include "app.h"
 #include "user.h"
 #include "question.h"
-
+#include <memory>
 
 using namespace std;
 
