@@ -1,6 +1,7 @@
 #include <iostream>
 #include "app.h"
 #include <algorithm>
+#include <memory>
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/rotating_file_sink.h"
 
@@ -26,26 +27,24 @@ App::App(DataEngine *_engine) {
     // Create a file rotating logger with 5mb size max and 3 rotated files
 }
 
-App::~App() {
-
-}
+App::~App() = default;
 
 App &App::get_instance(DataEngine *_engine) {
     static App instance(_engine);
     return instance;
 }
 
-bool App::local_register(shared_ptr<User> tmp_user) {
-    users.push_back(shared_ptr<User>(new User(*tmp_user))); // 通过复制构造函数建立持久对象并存入列表
+bool App::local_register(const shared_ptr<User>& tmp_user) {
+    users.push_back(std::make_shared<User>(*tmp_user)); // 通过复制构造函数建立持久对象并存入列表
     engine->save_users(users);
     engine->save();
     return true;
 }
 
 // 通过 username 和 token 找到 users 持久序列中的对象
-vector<shared_ptr<User>>::iterator App::find_user(shared_ptr<User> tmp_user) {
+vector<shared_ptr<User>>::iterator App::find_user(const shared_ptr<User>& tmp_user) {
     auto result = find_if(users.begin(), users.end(),
-                          [tmp_user](shared_ptr<User> per_user) {
+                          [tmp_user](const shared_ptr<User>& per_user) {
                               if ((tmp_user->get_name() == per_user->get_name()) &&
                                   (tmp_user->get_token() == per_user->get_token()) &&
                                   (tmp_user->get_isAnswer() == per_user->get_isAnswer())) {
@@ -57,8 +56,8 @@ vector<shared_ptr<User>>::iterator App::find_user(shared_ptr<User> tmp_user) {
 }
 
 // 通过 id 找到 questions 持久序列中的对象
-vector<shared_ptr<Question>>::iterator App::find_question(shared_ptr<Question> tmp_question) {
-    auto result = find_if(questions.begin(), questions.end(), [tmp_question](shared_ptr<Question>question) {
+vector<shared_ptr<Question>>::iterator App::find_question(const shared_ptr<Question>& tmp_question) {
+    auto result = find_if(questions.begin(), questions.end(), [tmp_question](const shared_ptr<Question>&question) {
         if (tmp_question->get_id() == question->get_id()) {
             return true;
         }
@@ -68,7 +67,7 @@ vector<shared_ptr<Question>>::iterator App::find_question(shared_ptr<Question> t
 }
 
 // 判断临时的对象能否在持久队列中找到,如果能则登录成功,反之则失败
-bool App::local_login(shared_ptr<User> tmp_user) {
+bool App::local_login(const shared_ptr<User>& tmp_user) {
     auto result = find_user(tmp_user);
     if (result == users.end()) {
         return false;
@@ -80,7 +79,7 @@ bool App::local_login(shared_ptr<User> tmp_user) {
 vector<shared_ptr<Question>> App::all_questions(bool answered) {
     vector<shared_ptr<Question>> tmp;
     copy_if(questions.begin(), questions.end(), back_inserter(tmp),
-            [answered](const shared_ptr<Question> per_question) {
+            [answered](const shared_ptr<Question>& per_question) {
                 if ((per_question->is_answered()) == answered) {
                     return true;
                 }
@@ -90,15 +89,15 @@ vector<shared_ptr<Question>> App::all_questions(bool answered) {
 }
 
 // 根据临时对象找出持久对象中对应个体的全部问题
-vector<shared_ptr<Question>> App::my_questions(shared_ptr<User> tmp_user) {
+vector<shared_ptr<Question>> App::my_questions(const shared_ptr<User>& tmp_user) {
     auto result = find_user(tmp_user);
     return (*result)->get_questions();
 }
 
 // 通过临时 user, question 对,进行提问操作
-bool App::ask_question(pair<shared_ptr<User>, shared_ptr<Question>> UQpair) {
+bool App::ask_question(const pair<shared_ptr<User>, shared_ptr<Question>>& UQpair) {
     auto tmp_user = UQpair.first;
-    auto persist_question = shared_ptr<Question>(new Question(*UQpair.second)); // 通过拷贝构造函数建立持久化对象
+    auto persist_question = std::make_shared<Question>(*UQpair.second); // 通过拷贝构造函数建立持久化对象
     questions.push_back(persist_question);  // 存储持久化对象
     auto user_iter = find_user(tmp_user);  // 通过临时对象寻找持久对象
     (*user_iter)->new_question(persist_question);  // 更新持久对象
@@ -108,7 +107,7 @@ bool App::ask_question(pair<shared_ptr<User>, shared_ptr<Question>> UQpair) {
     return true;
 }
 
-bool App::answer_question(pair<shared_ptr<User>, shared_ptr<Question>> UQpair) {
+bool App::answer_question(const pair<shared_ptr<User>, shared_ptr<Question>>& UQpair) {
     // 读取临时对象们
     auto tmp_user = UQpair.first;
     auto tmp_question = UQpair.second;

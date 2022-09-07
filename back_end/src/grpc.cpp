@@ -50,7 +50,7 @@ RouteImpl::AllQuestions(grpc::ServerContext *, const app::RequestQuestions *inpu
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("AllQuestions() Called");
     auto tmp_questions = runtime.all_questions(input->is_answered());
-    for (auto question: tmp_questions) {
+    for (const auto& question: tmp_questions) {
         auto one_question = output->add_questions();
         one_question->set_title(question->get_title());
         one_question->set_content(question->get_content());
@@ -68,7 +68,7 @@ grpc::Status RouteImpl::MyQuestions(grpc::ServerContext *, const app::RequestQue
     runtime.logger->info("MyQuestions() Called");
     auto tmp_user = shared_ptr<User>(create_tmp_user_from_proto(&input->user()));
     auto tmp_questions = runtime.my_questions(tmp_user);
-    for (auto question: tmp_questions) {
+    for (const auto& question: tmp_questions) {
         auto one_question = output->add_questions();
         one_question->set_title(question->get_title());
         one_question->set_content(question->get_content());

@@ -18,7 +18,7 @@ int preNUm(unsigned char byte) {
 }
 
 bool isUtf8(const char* data, int len) {
-	int num = 0;
+	int num;
 	int i = 0;
 	while (i < len) {
 		if ((data[i] & 0x80) == 0x00) {

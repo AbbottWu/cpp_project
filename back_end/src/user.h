@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include <utility>
 #include<vector>
 #include "question.h"
 using namespace std;
@@ -16,13 +17,13 @@ public:
 		token = "";
 		is_answer = true;
 	}
-	User(string n, string t, bool is_an):name(n),token(t),is_answer(is_an) {}
-	User(string n, string t, bool u, vector<shared_ptr<Question>> q) :name(to_utf8(n)), token(to_utf8(t)), is_answer(u), questions(q) {}
-	string get_name() const { return name; }
-	string get_token() const { return token; }
-	bool get_isAnswer() const { return is_answer; }
-	auto get_questions() const { return questions; }
-	void new_question(shared_ptr<Question> question) {
+	User(string n, string t, bool is_an):name(std::move(n)),token(std::move(t)),is_answer(is_an) {}
+	User(const string& n, const string& t, bool u, vector<shared_ptr<Question>> q) :name(to_utf8(n)), token(to_utf8(t)), is_answer(u), questions(std::move(q)) {}
+	[[nodiscard]] string get_name() const { return name; }
+	[[nodiscard]] string get_token() const { return token; }
+	[[nodiscard]] bool get_isAnswer() const { return is_answer; }
+	[[nodiscard]] auto get_questions() const { return questions; }
+	void new_question(const shared_ptr<Question>& question) {
 		questions.push_back(question);
 	}
 };
