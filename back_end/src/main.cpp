@@ -4,7 +4,6 @@
 #include "data_engine.h"
 #include "grpc.h"
 #include "app.h"
-// #include <Windows.h>
 
 using namespace std;
 
@@ -23,7 +22,7 @@ void thread_check_shutdown() {
     App &runtime = App::get_instance(nullptr);
     runtime.logger->info("watch thread is on");
     while (!shutdown_required){
-        sleep(2);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
     }
     runtime.server->Shutdown();
 }
