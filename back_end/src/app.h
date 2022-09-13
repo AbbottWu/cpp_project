@@ -15,23 +15,22 @@ class App {
 	// 如需加入到总序列中,需要通过复制构造函数创建新实例
 
 public:
-	static App& get_instance(DataEngine*);
+	static App& get_instance(DataEngine*,const string& log_file="");
 	bool local_register(const shared_ptr<User>&);
 	bool local_login(const shared_ptr<User>&);
 	vector<shared_ptr<Question>> all_questions(bool);
 	vector<shared_ptr<Question>> my_questions(const shared_ptr<User>&);
 	bool ask_question(const pair<shared_ptr<User>, shared_ptr<Question>>&);
 	bool answer_question(const pair<shared_ptr<User>, shared_ptr<Question>>&);
-	vector<shared_ptr<User>>::iterator find_user(const shared_ptr<User>&);
-	vector<shared_ptr<Question>>::iterator find_question(const shared_ptr<Question>&);
     std::unique_ptr<spdlog::logger> logger;
     std::unique_ptr<grpc::Server> server;
-    void RunServer();
+    void RunServer(const string&, const string&);
+    void SaveData();
 	~App();
 
 private:
 	DataEngine* engine;
-	explicit App(DataEngine*);
+	explicit App(DataEngine *, const string& log_file);
 	App(const App&) = delete; // NOLINT(modernize-use-equals-delete)
 	const App& operator=(const App&) = delete; // NOLINT(modernize-use-equals-delete)
 };

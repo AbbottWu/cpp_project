@@ -8,18 +8,18 @@
 
 using namespace std;
 
-App::App(DataEngine *_engine) {
+App::App(DataEngine *_engine, const string& log_file) {
     auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     console_sink->set_level(spdlog::level::info);
 
-    auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>("./my_log.txt", 1024 * 1024 * 10, 3);
+    auto file_sink = std::make_shared<spdlog::sinks::rotating_file_sink_mt>(log_file, 1024 * 1024 * 10, 3);
     file_sink->set_level(spdlog::level::trace);
 
     unique_ptr<spdlog::logger> tmp_point(new spdlog::logger("Server", {console_sink, file_sink}));
     logger = std::move(tmp_point);
 
     logger->set_level(spdlog::level::info);
-    logger->info("Logger created. Log file can be found at ./my_log.txt");
+    logger->info("Logger created. Log file can be found at "+ log_file);
 
     engine = _engine;
     // Create a file rotating logger with 5mb size max and 3 rotated files
@@ -27,23 +27,13 @@ App::App(DataEngine *_engine) {
 
 App::~App() = default;
 
-App &App::get_instance(DataEngine *_engine) {
-    static App instance(_engine);
+App &App::get_instance(DataEngine *_engine,const string & log_file) {
+    static App instance(_engine, log_file);
     return instance;
 }
 
 bool App::local_register(const shared_ptr<User>& tmp_user) {
     return engine->local_register(tmp_user);
-}
-
-// 通过 username 和 token 找到 users 持久序列中的对象
-vector<shared_ptr<User>>::iterator App::find_user(const shared_ptr<User>& tmp_user) {
-    return engine->find_user(tmp_user);
-}
-
-// 通过 id 找到 questions 持久序列中的对象
-vector<shared_ptr<Question>>::iterator App::find_question(const shared_ptr<Question>& tmp_question) {
-    return engine->find_question(tmp_question);
 }
 
 // 判断临时的对象能否在持久队列中找到,如果能则登录成功,反之则失败
@@ -71,8 +61,8 @@ bool App::answer_question(const pair<shared_ptr<User>, shared_ptr<Question>>& UQ
     // 读取临时对象们
 }
 
-void App::RunServer() {
-    string server_address = "127.0.0.1:12345";
+void App::RunServer(const string& address, const string& port) {
+    string server_address = address + ":" + port;
     RouteImpl service;
     grpc::ServerBuilder builder;
     builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
@@ -80,5 +70,11 @@ void App::RunServer() {
     server = builder.BuildAndStart();
     logger->info("Server listened on {}", server_address);
     server->Wait();
+}
+
+void App::SaveData() {
+    engine->write_questions();
+    engine->write_users();
+    engine->save();
 }
 
