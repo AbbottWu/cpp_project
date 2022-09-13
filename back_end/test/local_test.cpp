@@ -7,7 +7,7 @@ DataEngine *test_engine = new ProtoEngine("./bin");
 auto test_user_questions1 = test_engine->read_questions();
 auto test_user_questions2 = test_engine->read_questions();
 
-bool compare_questions_byid(const vector<shared_ptr<Question>>& one, const vector<shared_ptr<Question>>& another) {
+bool compare_questions_by_id(const vector<shared_ptr<Question>>& one, const vector<shared_ptr<Question>>& another) {
     std::set<string> id1;
     std::set<string> id2;
     for (const auto& var: one) {
@@ -38,8 +38,8 @@ bool preTest() {
     pre_test_questions.push_back(test_question4);
     pre_test_users.push_back(test_user1);
     pre_test_users.push_back(test_user2);
-    test_engine->save_questions(pre_test_questions);
-    test_engine->save_users(pre_test_users);
+    test_engine->write_questions();
+    test_engine->write_users();
     return true;
 }
 
@@ -70,8 +70,8 @@ TEST(AppLocalTest, SignUpTest) {
 TEST(AppLocalTest, ALLQuestionsTest) {
     auto answered = runtime.all_questions(true);
     auto not_answered = runtime.all_questions(false);
-    EXPECT_TRUE(compare_questions_byid(not_answered, test_user_questions1));
-    EXPECT_TRUE(compare_questions_byid(answered, test_user_questions2));
+    EXPECT_TRUE(compare_questions_by_id(not_answered, test_user_questions1));
+    EXPECT_TRUE(compare_questions_by_id(answered, test_user_questions2));
 }
 
 TEST(AppLocalTest, MyQuestionsTest) {
@@ -79,8 +79,8 @@ TEST(AppLocalTest, MyQuestionsTest) {
     auto test_user2 = std::make_shared<User>("bwu", "xcvb", true);
     auto user1 = runtime.my_questions(test_user1);
     auto user2 = runtime.my_questions(test_user2);
-    EXPECT_TRUE(compare_questions_byid(user1, test_user_questions1));
-    EXPECT_TRUE(compare_questions_byid(user2, test_user_questions2));
+    EXPECT_TRUE(compare_questions_by_id(user1, test_user_questions1));
+    EXPECT_TRUE(compare_questions_by_id(user2, test_user_questions2));
 }
 
 TEST(AppLocalTest, AskTest) {

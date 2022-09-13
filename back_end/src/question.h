@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "infrastructure.h"
+#include "data_engine.h"
 #include <memory>
 #include <utility>
 using namespace std;
@@ -8,7 +9,7 @@ using namespace std;
 class Question {
 	
 private:
-	string title;
+    string title;
 	string content;
 	string id;
 	int category;
@@ -34,4 +35,6 @@ public:
 	[[nodiscard]] bool is_answered() const {
 		return answered;
 	}
+    friend class ORMEngine;
+
 };

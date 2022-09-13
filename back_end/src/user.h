@@ -1,13 +1,17 @@
 #pragma once
 #include<iostream>
 #include <utility>
-#include<vector>
-#include "question.h"
+#include <vector>
+#include "data_engine.h"
+
 using namespace std;
+
+class Question;
 
 class User {
 private:
-	string name;  // 用户昵称
+    friend class ORMEngine;
+    string name;  // 用户昵称
 	string token;  // 用户的token（密码号）
 	bool is_answer; // 用户类型（指定是回答者'a'还是提问者'q'）
 	vector<shared_ptr<Question>> questions;

@@ -1,5 +1,6 @@
+cmake_minimum_required(VERSION 3.23)
+
 project(OneProject)
-cmake_minimum_required(VERSION 2.8.12)
 set(CMAKE_BINARY_DIR ./build)
 message(${CMAKE_BINARY_DIR})
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)

@@ -34,6 +34,4 @@ private:
 	explicit App(DataEngine*);
 	App(const App&) = delete; // NOLINT(modernize-use-equals-delete)
 	const App& operator=(const App&) = delete; // NOLINT(modernize-use-equals-delete)
-	vector<shared_ptr<User>> users;
-	vector<shared_ptr<Question>> questions;
 };
